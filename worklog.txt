@@ -1,0 +1,548 @@
+worklog
+09/27/2016
+Read the wiki/instruction first before action, don't try without thinking 
+ssh -X: open the GUI on ur local from the remote. Doesn't work on Mac OS.
+Ask for help when your way doen't work -- The trick learned from the other group doesn't work in my current task, it becomes very weired. Then I need to ask for help
+Don't promise when u not sure!
+When you are not in status, stop working, take a break/nap/sleep, it will be figured out after u come back.
+TODO: Learn Spring
+ASK: How do we break a big story into small tasks?
+
+
+09/28/2016
+Knowledge: Jmockit weired behavior: all methods in expectation needs to be mocked and strictExpectation needs to follow the order.
+
+
+09/29/2016
+Skills: SSH tunnal --> ssh -L 2009:localhost:2009 dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com
+		RCS -- look at the intern wiki
+
+Knowledge: Don't push code on Friday; 
+		Learn how to write CM.
+
+TODO: Watch the video of CM
+
+Problem resolved: FreshAutomatedBuyingDataAccess Integration Tests failed: change the FC number in database, but the intergration test doesn't chnage in mainline, only change in another branch, wait for merging into mainline. Before that, ignore this error.
+
+FAB Tools Website Integration Tests failed due to the AAA issue, retry it!
+
+Problem un-resolved: brazil-graph paths-to -d JBossLogging -- jdk1.7 error
+
+09/30
+
+ASK: Why do we need to specify the content root? 
+	Maven: Pom.xml  ---> Maven is a builder tool like Brazil
+	@AutoWired? ---> It's recongized by the type of @Componment automatically
+
+
+Knowledge: the string after the package name is the branch name in code.amazon.com
+
+The positions in Game company(Alex told me):
+Director:
+Producor: 
+Developers: Tools programmer(for designers and artists), Graphic programmer, Physics programmer, AI programmer, Animation programmer(These are for Game Engine, like libraries), Game playing programmer(Game Implementation)), System developer, network engineering
+Designers: level designer
+Arts:
+Testers:
+
+
+
+Skills: To make IntelliJ recongnize ur code as a peoject, u need to specify content root.
+
+TODO: Read the user guide wiki: https://w.amazon.com/index.php/AmazonFresh/RegionalSupplyChain/Fresh_Automated_Buying_User's_Guide
+
+10/03/2016
+
+Knowledge: SQS --> Message queue
+		SNS --> Push Notification
+		Cron: a tool in unix letting u arrange your tasks
+		IAD --> NA prod
+		PDX --> JP prod && NA test
+		DUB --> EU --> GB && UK prod
+		OOS --> Out of stack
+
+TO ASK: Monitor, operation
+
+10/04/2016
+
+ASK: 
+
+Learn: FMP --> Fresh Merchant Pratform
+	Shelf_life: from FC receival to product expiration
+	Shelf_pad_life: The time in days we want the customers to have to use.
+	The Shelf_time minus Shelf_pad_time would be the max time the product can stay in FC.
+	Buying period: the period btw the previous arrival and the next arrival 
+	Inventory Owner Group(IOG)
+
+Problem:
+
+TODO: Output a csv file for actual demand and rawForecast for 41 days
+
+10/05/2016
+
+ASK: hubs-spoke  crossdock    
+	SSH tunnel? http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html
+
+Learn: sout + TAB --> System.out.println()
+		command + J --> show the short cuts for some common commands
+		lead time: The period from the verdor ship the item to the fc received the item
+		supercsv library
+
+Problem:
+
+TODO: Output a csv file for actual demand and rawForecast for 41 days
+
+10/06/2016
+
+TODO: read the crossDock wiki
+
+ASK: normal node VS. virtual cross dock node diff?   lead time  
+	SSH tunnel? http://blog.trackets.com/2014/05/17/ssh-tunnel-local-and-remote-port-forwarding-explained-with-examples.html
+
+
+10/07
+ASK: What if our evaluation result is our method is better than SCOT.
+
+Skills: USe regex to find and replace: Eg: "\s" to find all space, "\t" to find all tabs, they are different
+		Field is the place other than local. eg, private final ProducerProxy producerProxy;
+		Local: eg, ProducerProxy producerProxy; in a method
+
+
+TODO: Learn regex
+
+Important and emergency: Spring,
+
+Important:
+
+emergency:
+
+Unimportant and umemerency:
+
+10/09 Friday
+DAO: Data access object
+ORM: Object-relation mapping. eg: Popular open source ORM products include Doctrine, Hibernate, iBATIS and JPA implementations such as Apache OpenJPA.
+
+ASK: How does usb hub work?
+	acceptance test?
+	https://github.com/google/guava/wiki/ThrowablesExplained
+
+Knowledge: LAX6 is our first crossdock fc
+	Delete word per time: Ctrl + Delete
+	acceptance testing is a test conducted to determine if the requirements of a specification or contract are met. Acceptance testing is also known as user acceptance testing (UAT), end-user testing, operational acceptance testing (OAT) or field (acceptance) testing.
+	In principle, unchecked exceptions indicate bugs, and checked exceptions indicate problems outside your control. 
+
+TODO: earphone to remove noise
+
+10/10
+
+ASK: why remove from cache?
+	Why don't use abstractClass?
+
+Knowledge: IOGL: Inventory Owner Group Location. Consists of an IOG and FC pair.
+		IAP: Inventory Availability Pool.
+		MM: Marketplace Merchant.
+		IOG: Inventory Owner Group
+
+10/13
+
+ASK: Why blue and green in package structure?
+ 	Why the toDateTimeAtStartOfDay() is 7:00?
+ 	Effective_shelf_life?
+ 	LatePO: PO is late than now? PoArrivalTime is the promise time
+
+ Knowledge: caseYield: quantity per case
+ 			If we don't really need the parameter, we can give them null in unit test
+
+ To learn: Joda time
+
+ TODO: fix .zshrc warning
+
+
+10/17
+
+Knowledge: The @JsonCreator annotation is useful in situations where the @JsonSetter annotation cannot be used. For instance, immutable objects do not have any setter methods, so they need their initial values injected into the constructor. 
+
+KS: SWF --> rerun, access.amazon.com, check the brief log
+
+
+10/18
+
+Knowledge: Jackson
+
+TO Learn: Why ObjetMapper doesn't work?
+
+
+10/19
+
+Skills: Most tests are writed in the beginning, but some of them are added after some bug found that origin test didn't cover.
+
+Knowledge: 3 workflows, 
+
+To Learn: When to throws, when to try/catch? 
+		try/catch is used to solve this problem right here and only give a warning message, not let it's caller know;
+		While throws is to ignore this problme here and let it's caller know and handle this problem.
+
+10/20
+
+Tips: Update JDK may cause some problems, don't update them especially while u are working on something.
+		bbcr will run the unit tests and then bbit to run the intergration test
+		checkstyle file
+
+Knowledge: Abstract classes may have abstract methods. Abstract methods are methods without implementations and these must be implemented by your subclass (unless you make your subclass abstract too). Abstract classes cannot be instantiated.
+
+10/21
+ASK: WHy remove "? extends"?
+	Andres: Horror stories
+
+To Learn: Shell
+
+Learn: Try youself first although it may take much time, don't ask before you try for some time, it's a learning experience
+		One code review per day
+		Test plan --> source code --> test code
+		Read wiki multiple times
+		Integration test will cost a long time since it depends on many other tests
+
+10/23
+ASK: dev --> mainline automatically? NO
+	KINESIS? Amazon Kinesis is a platform for streaming data on AWS, offering powerful services to make it easy to load and analyze streaming data, and also providing the ability for you to build custom streaming data applications for specialized needs. 
+
+Knowledge: 	fluxo --> cut ticket
+			Auora --> reporting
+			MySql --> fabcore(daily_roq_s3_links, purchase_order_requests, runs), fabric(ISM's configuration)
+			IOGL: Inventory Owner Group Location. Consists of an IOG and FC pair.
+			IAP: Inventory Availability Pool.
+			MM: Marketplace Merchant.
+			metrics --> transfer data to figures
+
+Skills: Injectable VS Mocked: https://phoenixjiangnan.github.io/2016/04/06/test/jmockit/Unit-Test-JMockit-What-are-the-differences-between-Mocked-and-Injectable-in-JMockit-and-when-to-use-Injectable-rather-than-Mocked/
+
+		HappyTrails: AAA issues, sync host from my 1-click beta environment
+		Ant is extended using Java class, the configuration file is xml; while "Make" is shell based, so it's depended on OS and easy to make sytax error when writing commands.
+		Apache Ivy is a dependency manager.
+
+10/24
+
+To Learn: Shell and vim skills
+
+Skills: static nested class:  this [static nested] class does not need an instance of the enclosing class in order to be instantiated itself. 
+	Example: 
+	public class Test { 
+	  class A { } 
+	  static class B { }
+	  public static void main(String[] args) { 
+	    /*will fail - compilation error, you need an instance of Test to instantiate A*/
+	    A a = new A(); 
+	    /*will compile successfully, not instance of Test is needed to instantiate B */
+	    B b = new B(); 
+	  }
+	}
+
+Knowledge: ExternalClientID --> ChainID --> PO
+			Same stuff has the same ASIN, no matter how they aggregated
+			ASIN + vendor code, we can get the aggregate level
+			Planned PO --> haven't called PO service
+			Actual PO --> reserved and submitted
+			FAB send PO request(externalID included) to PO service, PO service reply a chain ID immedately and verify the request, if it is valid, send a message to it's SNS. FAB register a SQS on it's SNS and will receive message if PO request if finished.
+
+
+10/26
+To Learn: Database!!!
+
+Skills: git add -i --> interactive adding? How?
+ 
+
+Knowledge: "big-O" ignores data storage latencies, topology, volume, available memory, and even the computational cost of every CPU instructions involved in a given implementation – instead, it merely counts the number of algorithmic operations! Big-O can be a valuable indication when designing algorithms but the best performing and scaling solution depends on the particular constraints of any specific problem and environment. 
+RSC: FOOD:  FabOrderingOrchestrationDirector
+	FPOG: Fresh purchase order gateway (validation)
+	IOG: Inventory order group: fresh, primeNow ...
+	IOGL: FC + IOG
+	External_client_ID in (database) is the same as (purchase_request_ID) in (database)
+
+
+10/27
+Skills: If there are serval class that have much in common, we can let other classes extends one of them. We don't have to make 		it abstract.
+		Search action or option name in IntelliJ:  command + shift + A
+		look recent files you open: command + E
+		Go back and forth through the history of visited tabs: command + [, command + ]
+		Navigate from the current tab to the next or previous tab: command + shift + [, command + shift + ]
+		Copy one line: command + D
+		delete one line: command + delete
+
+
+Problem: We might need to think about what these methods should return, since you won't be using the getReportingData(OutputId) method for all of the crossdock data fetching, but it's not immediately obvious how the data will need to be structured in here for getting what you'll need for inventory types.
+		
+	InventoryTypeDecider:	PurchaseOrderGroup.java PoInteraction.java FabricConfig
+Jokes: Amazon yesterday shipping
+
+
+10/28
+Knowledge: try (MetricsWrapper metrics = MetricsWrapper.get(metricsFactory) is for the our monitor(eg: igragh)
+
+Queston: Do we need to change the FabreportingData to transship?
+
+
+
+Skills: Mocked, then you don't get the NullPointer error
+		Use "any" to represent the things that u don't care
+		shift + alt + left click/mouse middle click drag: multicursor
+
+10/31
+
+
+11/1
+Skills: The value of a final variable can only be set once. The constructor is the only place in the code for a class that you can guarantee this will hold true; the constructor is only ever called once for an object but other methods can be called any number of times.
+
+http://javarevisited.blogspot.in/2014/01/why-default-or-no-argument-constructor-java-class.html
+http://www.joelonsoftware.com/articles/GuerrillaInterviewing3.html
+http://blog.stackoverflow.com/2016/10/Stack-Overflow-92-Podcast-The-Guerilla-Guide-to-Interviewing/?cb=1
+
+11/2
+Skills: You cannot mock your own method, can mock only proxy
+		Ser/Des test, test cases: test empty, normal and null.
+		Use assert instead of System.out.print() since it's didn't need to look at the output to determine whether it is right
+
+
+		If you have somewhat of a legacy application, and you're not allowed to change the visibility of your methods, the best way to test private methods is to use reflection.
+
+		Internally we're using helpers to get/set private and private static variables as well as invoke private and private static methods. The following patterns will let you do pretty much anything related to the private methods and fields. Of course you can't change private static final variables through reflection.
+
+		Method method = targetClass.getDeclaredMethod(methodName, argClasses);
+		method.setAccessible(true);
+		return method.invoke(targetObject, argObjects);
+
+		And for fields:
+
+		Field field = targetClass.getDeclaredField(fieldName);
+		field.setAccessible(true);
+		field.set(object, value);
+		
+		Notes:
+		1. targetClass.getDeclaredMethod(methodName, argClasses) lets you look into private methods. The same thing applies for  getDeclaredField.
+		2. The setAccessible(true) is required to play around with privates.
+
+
+		Often, developers spend a huge amount of time and effort in writing test cases that ensure the application works as expected. However, it is important to test negative test cases as well. A negative test case is a test case that tests if a system can handle invalid data. For example, consider a simple function which reads an alphanumeric value of length 8, typed by a user. In addition to alphanumeric values, the following negative test cases should be tested:
+
+		User specifies non – alphanumeric values like special characters
+		User specifies blank value
+		User specifies a value which is larger or smaller than 8 characters
+		Similarly, a borderline test case tests if the system works well for extreme values. For example, if a user is expected to enter a numeric value from 1 to 100, 1 and 100 are the borderline values and it is very important to test the system for these values.
+
+
+ToLearn: reflection, best practice of what you want to learn
+
+
+11/3
+
+To Learn: Stub, Mock and Spy
+			Java doc
+			Logger
+			Threading
+
+Skills: shift + F6 to refactor(rename)
+		command + p: hint for method signature
+
+		When you copy stuff from other files, it may copy it's package and class info. Eg: I coped a Logger from another class, it automatically copy the "import static com.amazon.fresh.fab.common.proxy.interfaces.RtipProxy.LOGGER;" from the original class, while I am intending to create my own Logger.
+
+		format your common variables for a test better so that when someone else comes back to this test later, they don't have to puzzle out what is going on. For example, all of the constants here should be private static final variables with capitalized names with underscores: VENDOR_CODE, ASIN, etc.
+
+		avoid using LocalDate.now() in these types of tests, especially if there's timezones involved. You can pick a date that represents your "start" for the test. I tend to use something easy to remember and do math on, like new LocalDate(2016, 1, 1).
+
+		You should also try to group constants together logically with newlines between groups
+
+		Unit test doesn't mean that you can assume the method is only execute once.
+
+11/4
+TODO: Sort out the work log
+
+Question: Why do we want to pull the call to the database out of the method?
+			@RunWith(Parameterized.class) @Parameters(name = "{index}: fib({0})={1}")
+			Is it a good practice to define order for test?
+
+Skills: pull the call to datebase out of the normal method.
+		Assert(expectedValue, actualValue)
+		http://junit.org/junit4/(
+		Assertions
+		Test Runners
+		Aggregating tests in Suites
+		Test Execution Order
+		Exception Testing
+		Matchers and assertThat
+		Ignoring Tests
+		Timeout for Tests
+		Parameterized Tests
+		Assumptions with Assume
+		Rules
+		Theories
+		Test Fixtures
+		Categories
+		Use with Maven
+		Multithreaded code and Concurrency
+		Java contract test helpers
+		Continuous Testing
+		)
+
+		JUnit provides overloaded assertion methods for all primitive types and Objects and arrays (of primitives or Objects). The parameter order is expected value followed by actual value. Optionally the first parameter can be a String message that is output on failure. There is a slightly different assertion, assertThat that has parameters of the optional failure message, the actual value, and a Matcher object. Note that expected and actual are reversed compared to the other assert methods.
+
+		Exception testing(https://github.com/junit-team/junit4/wiki/Exception-testing)
+
+		The @Test annotation has an optional parameter "expected" that takes as values subclasses of Throwable. 
+		@Test(expected = IndexOutOfBoundsException.class) 
+		public void empty() { 
+		     new ArrayList<Object>().get(0); 
+		}
+
+		When to use fail in unit test?
+		mark a test that is incomplete, so it fails and warns you until you can finish it
+		making sure an exception is thrown:
+
+		@Test
+		public void testExceptionMessage() {
+		    try {
+		        new ArrayList<Object>().get(0);
+		        fail("Expected an IndexOutOfBoundsException to be thrown");
+		    } catch (IndexOutOfBoundsException anIndexOutOfBoundsException) {
+		        assertThat(anIndexOutOfBoundsException.getMessage(), is("Index: 0, Size: 0"));
+		    }
+		}
+
+		prefer asserThat than assetEqual ...
+
+		The default JUnit runner treats tests with failing assumptions as ignored. 
+
+		Execute order: 
+		@BeforeClass setUpClass
+		@Before setUp
+		@Test test2()
+		@After tearDown
+		@Before setUp
+		@Test test1()
+		@After tearDown
+		@AfterClass tearDownClass
+
+Learning: If you really need to learn something, learn it throughly, otherwise you need to come back and learn it from beginning
+			
+		If the task needs more than one week to implement, call a design review meeting, even a simple one.
+
+Knowledge: RTIP is the Real-Time Item Processor. RTIP is the pipeline that reconciles, validates and normalizes Retail catalog 				data. It's the process that uses multiple vendor feeds to assemble Amazon’s retail view of an item.
+
+
+11/5
+Skills: we can use slowTest and fastTest to separate different test to save some time when running fast test.
+
+		Dependency Inversion: 
+		High level modules should not depend upon low-level modules. Both should depend upon abstractions.
+		Abstractions should never depend upon details. Details should depend upon abstractions.
+
+
+		Open/Closed:
+		It means that you should put new code in new classes/modules. Existing code should be modified only for bug fixing. New classes can reuse existing code via inheritance.Open/closed principle is intended to mitigate risk when introducing new functionality. Since you don't modify existing code you can be assured that it wouldn't be broken. It reduce maintenance cost and increase product stability.
+
+		You don't add testability by adding tests. You add testability by using SOLID design.
+
+		The test class above shows something unusual: the second test method declares a parameter! Normally, JUnit/TestNG test methods are not allowed to have parameters. When using JMockit, however, such mock parameters are allowed. In general, it's best to use mock fields of the test class only when the mocked types are needed by most or all tests in the class. Otherwise, mock parameters with scope limited to a single test are preferred. JMockit will always take care of instantiating the mocked type and either assigning the instance to the mock field (provided the field is not final) or passing it as an argument when the test method is invoked by the test runner.
+
+
+11/6
+Question: Do we prefer to use dummy or matcher? NO, we don't prefer to use matcher
+
+SKills: The best way to test multithreads code is to reduce the complexity of threaded code as much as possible. Minimize areas where threads interact, test as best as possible, and use code analysis to identify danger areas. 
+http://stackoverflow.com/questions/12159/how-should-i-unit-test-threaded-code
+
+	expectation also can be a separate method
+	Matcher: assertThat(result, either(is(1)).or(is(2))); 
+			assertThat(result, isOneOf(1, 2, 3))
+			assertThat(result, isIn(theCollection))
+			assertThat(result, anyOf(equalTo(1), equalTo(2), equalTo(3)))
+
+		Type migration: Alt + enter
+
+11/7
+Lessons: "git revert" will automatically make another commit with the old verison code
+		Use "git revert -n" to revert to old version and keep the file changes
+		Don't use "git rebase" when you are not sure you are all set, it will destroy the history and maybe be very hard to recover
+
+
+
+
+11/8
+Skills: The only time fields on test classes should be static is when they're static and final (constants like you've got above here). Otherwise, they should be fields if they are used in multiple tests or set as parameters for @Parameterized tests. Otherwise, everything should be method local so we don't run into weirdness where tests fail because they run in a different order than we expected.
+
+git - pushing specific commit: git push <remotename> <commit SHA>:<remotebranchname>
+
+
+Question: IAAF isCrossDockNormal() optional? IntelliJ is confused by the chain operation.
+			AutoComplete? --> Tab
+
+			
+Skills:	Deencapsulation.getField()
+		When remove a package, don't let ninja-sync help, or you will have problem in delete package in cloud
+		--no-review-guess to generate new cr
+
+11/9
+Skills: If you use some tech you don't familiar, please sure to check the doc and examples
+		When puting code into a class, think whhether it is the best place to put it 
+		Work on subtasks separately, create a local branch after finish a task
+
+		Trace - Only when I would be "tracing" the code and trying to find one part of a function specifically.
+		Debug - Information that is diagnostically helpful to people more than just developers (IT, sysadmins, etc.).
+		Info - Generally useful information to log (service start/stop, configuration assumptions, etc). Info I want to always have available but usually don't care about under normal circumstances. This is my out-of-the-box config level.
+		Warn - Anything that can potentially cause application oddities, but for which I am automatically recovering. (Such as switching from a primary to backup server, retrying an operation, missing secondary data, etc.)
+		Error - Any error which is fatal to the operation, but not the service or application (can't open a required file, missing data, etc.). These errors will force user (administrator, or direct user) intervention. These are usually reserved (in my apps) for incorrect connection strings, missing services, etc.
+		Fatal - Any error that is forcing a shutdown of the service or application to prevent data loss (or further data loss). I reserve these only for the most heinous errors and situations where there is guaranteed to have been data corruption or loss.
+
+		git tag -d tagName
+		dryrun: brazil ws --dryrun -p pkg1 -p pkg2
+		Use git pull --rebase
+		git push origin dev
+cr: A factory should not have to be recreated for each object it creates, and it should generally be stateless.
+
+
+11/10
+Question: @Autowired, what if it has a new method?
+			Will resolve conflict have problem on something since different versions have different api?
+
+
+
+11/11
+Skills: Never use rebase on public branch
+		After finish a task and push that branch, delete that branch because you no longer need it
+		Ww can use @Parameter and switch/case to write test in a clear way
+		We can make testcase such as "BeforeClass" and "AfterCLass" a class, so we can reuse it in other classes
+
+		Git merge local change to dev:
+		git checkout dev
+		git merge --no-ff myFeature
+		The --no-ff flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature.
+
+		http://nvie.com/posts/a-successful-git-branching-model/
+
+		git log -g: can see all the local log info including the ones you already rebased
+		 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
