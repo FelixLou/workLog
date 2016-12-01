@@ -360,7 +360,7 @@ Question: Why do we want to pull the call to the database out of the method?
 			Is it a good practice to define order for test?
 
 Skills: pull the call to datebase out of the normal method.
-		Assert(expectedValue, actualValue)
+		Assert(expectedValue, actualValue): The expectedValue comes first
 		http://junit.org/junit4/(
 		Assertions
 		Test Runners
@@ -420,11 +420,10 @@ Skills: pull the call to datebase out of the normal method.
 		@After tearDown
 		@AfterClass tearDownClass
 
-Learning: If you really need to learn something, learn it throughly, otherwise you need to come back and learn it from beginning
-			
+Learning: If you really need to learn something, learn it throughly, otherwise you need to come back and learn it again from beginning
 		If the task needs more than one week to implement, call a design review meeting, even a simple one.
 
-Knowledge: RTIP is the Real-Time Item Processor. RTIP is the pipeline that reconciles, validates and normalizes Retail catalog 				data. It's the process that uses multiple vendor feeds to assemble Amazon’s retail view of an item.
+Knowledge: RTIP is the Real-Time Item Processor. RTIP is the pipeline that reconciles, validates and normalizes Retail catalog data. It's the process that uses multiple vendor feeds to assemble Amazon’s retail view of an item.
 
 
 11/5
@@ -433,7 +432,6 @@ Skills: we can use slowTest and fastTest to separate different test to save some
 		Dependency Inversion: 
 		High level modules should not depend upon low-level modules. Both should depend upon abstractions.
 		Abstractions should never depend upon details. Details should depend upon abstractions.
-
 
 		Open/Closed:
 		It means that you should put new code in new classes/modules. Existing code should be modified only for bug fixing. New classes can reuse existing code via inheritance.Open/closed principle is intended to mitigate risk when introducing new functionality. Since you don't modify existing code you can be assured that it wouldn't be broken. It reduce maintenance cost and increase product stability.
@@ -444,7 +442,7 @@ Skills: we can use slowTest and fastTest to separate different test to save some
 
 
 11/6
-Question: Do we prefer to use dummy or matcher? NO, we don't prefer to use matcher
+Question: Do we prefer to use dummy or matcher? NO, we don't prefer to use matcher since it's not strong
 
 SKills: The best way to test multithreads code is to reduce the complexity of threaded code as much as possible. Minimize areas where threads interact, test as best as possible, and use code analysis to identify danger areas. 
 http://stackoverflow.com/questions/12159/how-should-i-unit-test-threaded-code
@@ -461,28 +459,27 @@ http://stackoverflow.com/questions/12159/how-should-i-unit-test-threaded-code
 Lessons: "git revert" will automatically make another commit with the old verison code
 		Use "git revert -n" to revert to old version and keep the file changes
 		Don't use "git rebase" when you are not sure you are all set, it will destroy the history and maybe be very hard to recover
-
-
+		USe "git pull rebase" to pull the changes from remote
 
 
 11/8
-Skills: The only time fields on test classes should be static is when they're static and final (constants like you've got above here). Otherwise, they should be fields if they are used in multiple tests or set as parameters for @Parameterized tests. Otherwise, everything should be method local so we don't run into weirdness where tests fail because they run in a different order than we expected.
+Skills: The only time fields on test classes should be static is when they're static and final (constants like you've got above here). Otherwise, they should be fields if they are used in multiple tests or set as parameters for @Parameterized tests. Otherwise, everything should be method local so we don't run into weirdness where tests fail because they run in a different order than we expected. --zev
 
 git - pushing specific commit: git push <remotename> <commit SHA>:<remotebranchname>
 
 
 Question: IAAF isCrossDockNormal() optional? IntelliJ is confused by the chain operation.
-			AutoComplete? --> Tab
+			AutoComplete without appending --> Tab
 
 			
-Skills:	Deencapsulation.getField()
-		When remove a package, don't let ninja-sync help, or you will have problem in delete package in cloud
+Skills:	Deencapsulation.getField() reflection to get private field
+		When remove a package, close ninja-sync first, don't let ninja-sync help, or you will have problem in delete package in cloud
 		--no-review-guess to generate new cr
 
 11/9
 Skills: If you use some tech you don't familiar, please sure to check the doc and examples
 		When puting code into a class, think whhether it is the best place to put it 
-		Work on subtasks separately, create a local branch after finish a task
+		Work on subtasks separately, create a local branch after finish a task!!! That works fantastic!
 
 		Trace - Only when I would be "tracing" the code and trying to find one part of a function specifically.
 		Debug - Information that is diagnostically helpful to people more than just developers (IT, sysadmins, etc.).
@@ -491,8 +488,8 @@ Skills: If you use some tech you don't familiar, please sure to check the doc an
 		Error - Any error which is fatal to the operation, but not the service or application (can't open a required file, missing data, etc.). These errors will force user (administrator, or direct user) intervention. These are usually reserved (in my apps) for incorrect connection strings, missing services, etc.
 		Fatal - Any error that is forcing a shutdown of the service or application to prevent data loss (or further data loss). I reserve these only for the most heinous errors and situations where there is guaranteed to have been data corruption or loss.
 
-		git tag -d tagName
-		dryrun: brazil ws --dryrun -p pkg1 -p pkg2
+		git tag -d tagName: to delete a tag
+		dryrun: brazil ws --dryrun -p pkg1 -p pkg2: this will upload your local code to build.amazon.com to start a dryrun
 		Use git pull --rebase
 		git push origin dev
 cr: A factory should not have to be recreated for each object it creates, and it should generally be stateless.
@@ -501,8 +498,6 @@ cr: A factory should not have to be recreated for each object it creates, and it
 11/10
 Question: @Autowired, what if it has a new method?
 			Will resolve conflict have problem on something since different versions have different api?
-
-
 
 11/11
 Skills: Never use rebase on public branch
@@ -518,6 +513,136 @@ Skills: Never use rebase on public branch
 		http://nvie.com/posts/a-successful-git-branching-model/
 
 		git log -g: can see all the local log info including the ones you already rebased
+
+		Logger.error/warn/info... doesn't have the String format built in, you need to write it explictly. eg:  LOGGER.error(String.format("Failed to retrieve run record from fabcore database with outputId: %s",outputId)); 
+
+		Whenever I pull, under most circumstances I git pull --rebase. This is because I like to see a linear history (my commit came after all commits that were pushed before it, instead of being developed in parallel). It makes history visualization much simpler and git bisect easier to see and understand.
+
+
+		A specific circumstance in which you should avoid using git pull --rebase is if you merged since your last push. You might want to git fetch; git rebase -p @{u} (and check to make sure the merge was recreated properly) or do a normal merge in that circumstance.
+		Another specific circumstance is if you are pulling from a non-authoritative repository which is not fully up to date with respect to your authoritative upstream. A rebase in this circumstance could cause the published history to be rewritten, which would be bad.
+
+		
+11/14
+ Knowledge: Wall-time: it is the difference between the time at which a task finishes and the time at which the task started.
+ Skills: Name: private Long transshipDelta; /* time between hub arrival and spoke arrival in millis */
+ 		Should be named as "transshipDeltaMillis"
+
+
+ 11/15
+ Question: https://cr.amazon.com/r/6209781/ generic
+ Skills: Ctrl + Tab to switch tabs
+
+ 11/16
+ TODO: Copy link and their name from Sprint to wiki for sprint report
+
+Knowledge: Carnaval is the overall(aggregate) alarm, which can cut ticket; cloudWatch is the aws alarm, we can connect cloudWatch and Carnaval by adding field in     Carnaval; But Carnaval is hard to config, so we have ZIOps to help us config the alarm system.
+
+TOASK: What does the operation metric say?
+
+11/17
+Knowledge: Sometimes the number key on the keyboard are not recongnized correctly.
+
+Skills: CREATE INDEX for things you want to query in a large table. If you don't need to query it, don't create it.
+		eg: CREATE INDEX `i_crossdock_actual_po_spoke_fc_id` ON `fab_reporting`.`crossdock_actual_po_requests` (`spoke_handoff_date` DESC, `spoke_fc_id` ASC, `spoke_iog` ASC, `source_asin` ASC);
+		If you want to query `spoke_handoff_date` and `spoke_fc_id`, you don't nned to create a new one. You already got it.
+		But if you want to query `spoke_iog` and `source_asin`, you need a new query.
+
+
+11/18
+Skills: Shift + Command + { }: switch tabs in Terminal
+
+Question: Open/Closed?
+
+Knowledge: There are three components to good software: design, performance, and documentation[ citation needed ]. Software that's well-designed, performs acceptably, and well-documented, is good software. 
+		Brazil's package is different from java's package
+
+2016-11-20
+Skills: Shortcut for Outlook: Command + 1,2,3,4 --> mail, calendar, contacts, tasks
+							Command + j --> Forward a mail
+							Command + n --> compose a new mail
+		shortcut for chrome: command + d ---> bookmark this page
+							home, end to scroll to head or end of a page
+							command + 1, 2, 3...
+
+
+		Use spotlight to launch apps
+		Command + l --> focus and select web browser's address bar
+		command + shift + -> or <- : select the whole line
+		shift + -> or <- : select char by char
+		alt/option + -> or <- : move cursor word by word(also works in terminal, awesome!)
+		ctrl/option/alt + backspace: remove word by word
+		shift + option/alt: select the whole word 
+		shift + home : select from current to beginning
+		shift + end : select from current to end 
+
+		If you need to make a interface from an exist class, you can use "extract class"
+
+
+Knowledge: Aspect: PointCut aspect advisor
+			wildcard: * *.*(..) this first one is return type, the second is the class name, the third is the method name, the forth is the args type
+
+			instanceOf ClassName/Interface
+
+2016-11-21
+Skills: Insert date: command +d, command +d
+		Open a duplicate tab, command + L to focus on the address bar and then alt + enter to open a new duplicate one in new tab
+
+Knowledge: Grooming: MessgaeProcessor
+			RedShift other database do?
+			Rtips?
+			AAA metrics and coral metrics
+
+2016-11-22
+TODO: Push the code change to dev
+
+ASK: Why watch gamma to see the error/fatal/warning?
+	FSS mointer name?
+	internal.amazon.com marketPlace?
+
+Knowledge: AWS service: NA --> US.East
+			EU --> EU.West-1
+			JP --> US.West-2
+
+2016-11-23
+Knowledge: Story points and task points are like the weight and height of an elephant, it's relavant but not necessary same
+
+
+2016-11-28
+Knowledge: If the code you didn't checked out is pushed but failed on pipeline due to other changes, even if you got the latest versionset and code, it will not compile or failed since the versionset didn't have the code change. If you checked out this package in local, you can got the latest code change and thus succeed in local.
+
+
+
+2016-11-29
+
+TODO: look at the RscRetryWrapper ---> Look at the RegionalSupplyChainPrimitives package ---> from lower to higher level package
+
+Skills: There is a File Type in IntelliJ which you can choose which file type to ignore and which to recongnize. If you put a file type in ignore field, it will not be recognized by IntelliJ, thus the import that kind of file will not be resolved.
+
+Knowledge: Threadpool
+		 Stack --US EU JP FE(Far East)
+		 Spike
+		 dynamic config
+
+		 Three services: gathering computing orchstrictor
+
+2016-11-30
+
+Skills: Controller should be thin and do nothing actual job, it's just a controller or manager.
+
+		Multithread is hard to test and thus we should avoid test multithread as we can. We can break the multithread part into a single class and test it in single thread.
+
+		Hot swap failed in IntelliJ: You are attempting to change your source code while the program (or IntelliJ's debugger) is still running. 
+		Lamda expression will create an anonymous class, which is hard to test
+
+		This keyword in Builder class means builder itself
+		
+
+
+
+
+
+
 		 
 
 
