@@ -554,7 +554,9 @@ Skills: Shift + Command + { }: switch tabs in Terminal
 
 Question: Open/Closed?
 
-Knowledge: There are three components to good software: design, performance, and documentation[ citation needed ]. Software that's well-designed, performs acceptably, and well-documented, is good software. 
+Knowledge: 
+		There are three components to good software: design, performance, and documentation. Software that's well-designed, performs acceptably, and well-documented, is good software. 
+
 		Brazil's package is different from java's package
 
 2016-11-20
@@ -579,26 +581,21 @@ Skills: Shortcut for Outlook: Command + 1,2,3,4 --> mail, calendar, contacts, ta
 		If you need to make a interface from an exist class, you can use "extract class"
 
 
-Knowledge: Aspect: PointCut aspect advisor
+Knowledge: Aspect: PointCut, aspect and advisor
 			wildcard: * *.*(..) this first one is return type, the second is the class name, the third is the method name, the forth is the args type
 
-			instanceOf ClassName/Interface
+			instanceOf ClassName/InterfaceName
 
 2016-11-21
 Skills: Insert date: command +d, command +d
-		Open a duplicate tab, command + L to focus on the address bar and then alt + enter to open a new duplicate one in new tab
+		Open a duplicate tab: command + L to focus on the address bar and then alt + enter to open a new duplicate one in new tab
 
 Knowledge: Grooming: MessgaeProcessor
 			RedShift other database do?
-			Rtips?
 			AAA metrics and coral metrics
 
 2016-11-22
-TODO: Push the code change to dev
-
 ASK: Why watch gamma to see the error/fatal/warning?
-	FSS mointer name?
-	internal.amazon.com marketPlace?
 
 Knowledge: AWS service: NA --> US.East
 			EU --> EU.West-1
@@ -624,7 +621,7 @@ Knowledge: Threadpool
 		 Spike
 		 dynamic config
 
-		 Three services: gathering computing orchstrictor
+		 FAB's three services: gathering computing orchstrictor
 
 2016-11-30
 
@@ -636,18 +633,312 @@ Skills: Controller should be thin and do nothing actual job, it's just a control
 		Lamda expression will create an anonymous class, which is hard to test
 
 		This keyword in Builder class means builder itself
-		
+
+		Ctrl + Command + F to toggle full screen model
+
+2016-12-02
+TOASK: signal
+Skills: Use @ignore to ignore the test you don't need to run, especially in integration test which is time consuming. But remember to remove it afterwards.
+
+
+2016-12-04
+Skills: Blue-green deployment is a release technique that reduces downtime and risk by running two identical production environments called Blue and Green. At any time, only one of the environments is live, with the live environment serving all production traffic. For this example, Blue is currently live and Green is idle. (https://docs.cloudfoundry.org/devguide/deploy-apps/blue-green.html)
+
+		If there are two and maybe more cases in the futrue, we can use switch/case statement to control the flow. Remember to add "break" after each case! If there are two cases and they have some common code, don't save these code to put them togetherm instead make it clear that each peration in each case.
+
+TOASK: https://docs.cloudfoundry.org/devguide/deploy-apps/blue-green.html (datebase, why not directly unmap blue, how do customers deal with subdomain)
+
+ToLearn: What is FcID? Is same as fcExternalId, maybe some of them are migrated and removed.
+		Remote Debug
+		Annotation
+		Database schema
+		lamda expression
+
+
+Knowledge: https://www.linkedin.com/pulse/amazonians-response-inside-amazon-wrestling-big-ideas-nick-ciubotariu
+		FetchType.lazy and FetchType.eager: http://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
+
+
+ONCALL: Correspondence, work Log, root cause and resolution
+		Route ticket to
+		If a ticket is put into researching area for more than 90 minutes, it will escalation to your manager. But if you put into pending stage, it will not.
+
+		Tips:
+		Focus on addressing the customer impact first
+		check the obvious -- look at yur metrics
+		determine what has recently changed
+		Don't make more than one major change at a time
+		Document any changes you've made
+		Be prepared to rollback
+		Search for resolved tickets with the same issue/CTI
+		check if there has been a recent ccode deployment
+		consider trying an active, bounce, or rollback
+		keep calm and reach for help
+
+		When oncall:
+		Your first priority is to handle high severity events. Put the fire out.
+		Your second priority is to protect the productivity of your team. As the oncall it is your duty to protect your team from being pulled off of their work into operational issues. You do this by owning the team's operations and proactively jumping on emails, escalations, and any questions that may distract them. Your co-workers will thank you for this, and will hopefully return the favor when you return to project work (and they're oncall!)
+
+		Shadowing ideally last about 2 weeks and looks something like this:
+		During the first week you shadow the primary, handling low severity tickets during the day and reviewing any high severity tickets with the primary after they have resolved the issue.
+		Next, beginning on a Friday, any time a high severity ticket comes in, the primary pages you in -- at the time the ticket happens -- day or night. During this phase, you work the ticket with coaching from the Primary.
+		At the end of the weekend, on Monday, your roles reverse. You become the primary with a secondary to back you up. During this phase you have the option to page in the secondary but only when you need it. You both then debrief on any high severity tickets the morning after they occur.
+		The next time you go oncall, your team can decide to give you a secondary backup or you can fly solo.
+
+		Important note about Autocuts
+		Autocut tickets will de-dupe (that is to say "not cut another ticket") as long as the ticket is left open -- even in another queue. So it is not a good idea to reassign them or leave them open. Many teams will close the ticket, as soon as a monitor is out of alarm, open a Root Cause Action Ticket and relate the Autocut ticket to it. On a related note, it's not a good idea to 'Pending Requester info' (to avoid the escalation feature). You might miss an alarm.
+		Additionally, if someone reassigns an Autocut ticket to you, don't reject it or forward it to another group. Close it and link a new ticket to the original Autocut -- at the same severity -- then work it or re-assign it to the new group.
+
+		Tickets have two separate diary entry types:
+		Entries put into the Correspondence field are emailed out to all individuals on the Cc: list
+		Worklog entries are not.
+
+		Update early, update often
+
+
+Tips for CM: The title should be abstract and should not include technical details.
+			When things went wrong, repsonse should be "Rollback and fix it"
+
+TODO: trigger a notification when build finished
+
+
+2016-12-07
+TODO: One more task in FabTools for datetime change
+	Do we need to change everything related to date to dateTime? Including warehouseQuantities, PoQuantities and plannedPoQuantities, PoAvailability?
+Skills: Dry-run before you push(brazil ws dry-run)
+
+
+
+2016-12-12
+
+Learn: Cannot resolve "import org.apache.catalina.connector.ClientAbortException;" due to IntelliJ cannot recognize ?? (https://code.amazon.com/packages/FABToolsWebsiteContent/commits/9d8c938013fe9ad23cfda6529fdf31a9ee0fe585#)
+
+2016-12-13
+Learn: Coral service can generate some code for you, so some code cannot be resolved until do a "brazil-build generate" and mark the generated-src as src. The way to generate the code is defined in the model.xml.
+
+Coral is generated by Hex.
+
+The command to deactive FABToolsWebsite apollo env: sudo /apollo/bin/runCommand -e FABToolsWebsite -a Deactivate
+The command to active FABToolsWebsite AAA: sudo /apollo/bin/runCommand -e FABToolsWebsite.CONSUMES.AAASecurityDaemon -a Activate
+
+REMOTE DEBUG: FABTools port 5050
+				FabService port 5050: Use coral diver to trigger the breakpoint
+
+			If your apollo env is active, when you run your dev, it actually runs on apollo; If you deactive it, it will then run on your dev desktop.
+
+Don't necessary to get everything done, finish the important first!
+Skills: F2 to go to the next/previous error
+
+2016-12-14
+Skills:
+
+By default, running git stash will stash:
+* changes that have been added to your index (staged changes)
+* changes made to files that are currently tracked by Git (unstaged changes)
+But it will not stash:
+* new files in your working copy that have not yet been staged
+* files that have been ignored
+
+git stash save {message}
+
+git stash -u : also stash  untracked files(not added new files)
+git stash -a: also stash ignored files
+git stash -p: partial stash
+git stash drop stash@{1}: clean up your stash
+git stash clear: delete all of your stashes
+
+
+Vim:
+a	Append text after the cursor [count] times.
+A	Append text at the end of the line [count] times.
+i	Insert text before the cursor [count] times.
+I	Insert text before the first non-blank in the line [count] times.
+o	Begin a new line below the cursor and insert text, repeat [count] times.
+O	Begin a new line above the cursor and insert text, repeat [count] times.
+u   undo
+ctrl + r: redo
+0   jumps to the beginning of the line
+$   jumps to the end of the line
+^   jumps to the first non-blank
+g_ → go to the last non-blank character of line
+H/M/L  jump directly to the high/middle/low of the screen
+G   jumps to the end of the file or the line# typed before it
+NG → Go to line N
+gg → shortcut for 1G - go to the start of the file
+Use w,b,e to move along "words".
+* (resp. #) : go to next (resp. previous) occurrence of the word under the cursor
+Use R to enter insert mode with an overstrike cursor, which types over existing characters
+f   followed by another key, moves the cursor to the next instance of that character on the current line.
+F   Do backwards as f
+t/T Do the same as f/F, but stop right before the character
+w   Next word
+d   delete, followed, by any motion deletes the text between the cursor and that motion's destination(eg.: dw df_)
+c   change, does the same as d, but leaves you in insert mode
+p   paste
+y   followed by any motion to copy(yy copy the current line)
+text deleted by d,c,x is also copied
+/   search 
+?   search backwards
+n   repeats the last search in the same direction and N do backwards
+Be careful that this search target is interpeted as regular expression: a*b means zero or more 'a's followed by a 'b'; ^abc means 'abc' at the beginning of a line;
+[0-9] looks for the next digit
+%   jump between matching pairs of '(', ')', '[', ']'
+-/+ jump to the previous/next file
+r   followed by any character replaces the current character with that one
+J   joins the current line with the next one 
+cw → replace from the cursor to the end of the word
+:e <path/to/file> → open
+:saveas <path/to/file> → save to <path/to/file>
+N<command> → will repeat the command N times.
+
+Remember about the importance of vi moves? Here is the reason. Most commands can be used using the following general format:
+<start position><command><end position>
+For example : 0y$ means
+0 → go to the beginning of this line
+y → yank from here
+$ → up to the end of this line
 
 
 
 
+k 上
+j  下
+h  左
+l  右
+
+(	[count] sentences backward
+)	[count] sentences forward
+{	[count] paragraphs backward
+}	[count] paragraphs forward
+
+.: repeat the last command
+%: The '%' motion moves from a parenthesis (or similar grouping character) to its matching one 
 
 
-		 
+
+DateTime/Date/Instant
+        System.out.println(new DateTime(2016, 12, 13, 2, 5, 5).toDate().toInstant());
+        System.out.println(new DateTime(2016, 12, 13, 2, 5, 5).toDate());
+        System.out.println(new DateTime(2016, 12, 13, 2, 5, 5, DateTimeZone.forID("America/Los_Angeles")));
+
+        2016-12-13T02:05:05Z
+		Tue Dec 13 02:05:05 UTC 2016
+		2016-12-13T02:05:05.000-08:00
+
+SKills: Alt + Command + left/right to navigate btw previous view positions
+
+2016-12-15
+Skills:  Vim:  'f' followed by any other character to find its next occurrence, '%' to use matching parens to go where you want to go, etc... When navigating the file, you have motions to go to the top/middle/bottom of the screen directly, '/' which is effortless to type to search for a string, ']]' and the likes to navigate by functions, etc. 'H', 'M' and 'L' take the cursor directly to the 'H'ighest, 'M'iddle, or 'L'ower line on the screen. 
+
+Terminal: 
+
+Using the clipboard: pbcopy copies what is given to it by stdin into the clipboard. pbpaste pastes what is in the clipboard to stdout.
+You can open the curent directory in Finder by typing open .. In fact, you can open a file the same way opening it in finder would work by typing open <filename>.
+Use opensnoop to see which files are being modified live. You can narrow it down to a process or a particular file, by using the -p or -f arguments, respectively.
+Make the computer speak (literally) by typing say <sentence>. This comes in handy for keeping track of what your shell script is doing while you are away from the computer.
+Assuming you have set vi mode for bash, hit Escape+v to edit the current command line you are writing in vim. Very useful if you are working on a long command.
 
 
+Remote login my work mac: ssh lujiabin@9801a790b6f1.sea.amazon.com
+
+Do another thing after some thing is done"
+Generally, if you know this before running the command, you can just start it with:
+command; command-after &
+This will execute the command-after after the previous command has exited (regardless of its exit code). The & will start it in background.
+If you care about a successful or failure exit, respectively use:
+command && command-after-only-if-success &
+command || command-after-only-if-fail &
 
 
+Leadership: Where possible the users shouldn’t be the ones noticing an issue first.
+
+
+English: potluck --> a meal or party to which each of the guests contributes a dish.
+
+
+2016-12-16
+Three Advantages: Deliver results, Think Big, Learn and be Curious
+Three not understand well: Bias for Action, Are Right, A Lot, Ownership
+
+Permission: odin credential, apollo, aws account, AAA
+
+T-shirt sizing?
+
+NA:  UNJ1 UWI1 UNC1 UPA1 HWA2 UIL2 UFL2(N) 
+
+
+EU: HUK2 UED1 (N)
+
+
+2016-12-19
+SQL: 
+Comments: -- single line; /*  */ multiple lines
+LIKE: SELECT * FROM Customers WHERE City LIKE 's%';
+Wildcard: 
+Wildcard	Description
+%			A substitute for zero or more characters
+_			A substitute for a single character
+[charlist]	Sets and ranges of characters to match
+[^charlist]
+or          Matches only a character NOT specified within the brackets
+[!charlist]
+
+The IN operator allows you to specify multiple values in a WHERE clause.
+The BETWEEN operator selects values within a range. The values can be numbers, text, or dates
+
+SQL aliases are used to give a database table, or a column in a table, a temporary name.
+Basically aliases are created to make column names more readable.
+
+INNER JOIN: Returns all rows when there is at least one match in BOTH tables
+LEFT JOIN: Return all rows from the left table, and the matched rows from the right table
+RIGHT JOIN: Return all rows from the right table, and the matched rows from the left table
+FULL JOIN: Return all rows when there is a match in ONE of the tables
+
+The UNION operator is used to combine the result-set of two or more SELECT statements. UNION selects only distinct values. Use UNION ALL to also select duplicate values!
+
+The SELECT INTO statement selects data from one table and inserts it into a new table.
+
+The INSERT INTO SELECT statement selects data from one table and inserts it into an existing table. Any existing rows in the target table are unaffected.
+
+ In SQL, we have the following constraints:
+
+NOT NULL - Indicates that a column cannot store NULL value
+UNIQUE - Ensures that each row for a column must have a unique value
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Ensures that a column (or combination of two or more columns) have a unique identity which helps to find a particular record in a table more easily and quickly
+FOREIGN KEY - Ensure the referential integrity of the data in one table to match values in another table
+CHECK - Ensures that the value in a column meets a specific condition
+DEFAULT - Specifies a default value for a column
+
+Indexes allow the database application to find data fast; without reading the whole table.
+The users cannot see the indexes, they are just used to speed up searches/queries.
+Updating a table with indexes takes more time than updating a table without (because the indexes also need an update). So you should only create indexes on columns (and tables) that will be frequently searched against.
+
+
+Aurora: MySQL(RDBMS)
+Redshift: postgresql (ORDBMS)
+
+
+2016-12-20
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'aws.rsc.async.topicArn' in string value "${aws.rsc.async.topicArn}"
+
+CR: The better user experience would be to  actually fix the date picker to not error on a mm/d/yyyy format.  8/12/17 will return an empty date too.  Will the date picker support a m/d/yyyy format?
+
+2016-12-21
+FOOD KinisisConsumer --> TodWorker
+To setup SWF Flow-Framework in IntelliJ you should first understand additional things that happen during build. There are 2 main things:
+Flow Framework uses java Annotation Processor Tools (aka APT, details: http://docs.oracle.com/javase/7/docs/technotes/guides/apt/) to generate java clients for activities and workflows.
+AspectJ is used to weave the code executed by workflow. More exactly it weaves the @Asynchronous and @ExponentialRetry annotations.
+
+Annotation Processing Tool (apt): The apt tool first runs annotation processors that can produce new source code and other files. Next, apt can cause compilation of both original and generated source files, thus easing the development cycle.
+
+SOP: Standard Operation Procedure
+
+"baking" (leaving a build in Devo for a while to see what happens)
+
+RediFork solves a problem that many teams have in regards to moving towards full Continuous Deployment: manual bake time. 
+
+2016-12-22
+1. Attend office hour is much more efficient than looking at wiki ourselves
 
 
 
