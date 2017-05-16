@@ -1,0 +1,1524 @@
+When you are not in status, stop working, take a break/nap/sleep, it will be figured out after u come back.
+
+Jmockit all methods in expectation needs to be mocked and strictExpectation needs to follow the order.
+
+Skills: SSH tunnal --> ssh -L 2009:localhost:2009 dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com
+
+@AutoWired? ---> It's recongized by the type of @Componment automatically by autoscan the package
+
+The positions in Game company(Alex told me):
+Director:
+Producor: 
+Developers: Tools programmer(for designers and artists), Graphic programmer, Physics programmer, AI programmer, Animation programmer(These are for Game Engine, like libraries), Game playing programmer(Game Implementation)), System developer, network engineering
+Designers: level designer
+Arts:
+Testers:
+
+SQS --> Message queue
+SNS --> Message topic, Push Notification
+Cron: a tool in unix letting u arrange your tasks
+IAD --> NA prod
+PDX --> JP prod && NA test
+DUB --> EU --> GB && UK prod
+OOS --> Out of stack
+
+FMP --> Fresh Merchant Pratform
+Shelf_life: from FC receival to product expiration
+Shelf_pad_life: The time in days we want the customers to have to use.
+The Shelf_time minus Shelf_pad_time would be the max time the product can stay in FC.
+Buying period: the period btw the previous arrival and the next arrival 
+Inventory Owner Group(IOG)
+
+sout + TAB --> System.out.println()
+command + J --> show the short cuts for some common commands
+lead time: The period from the verdor ship the item to the fc received the item
+
+Use regex to find and replace: Eg: "\s" to find all space, "\t" to find all tabs, they are different
+
+Field is the place other than local. eg, private final ProducerProxy producerProxy;
+Local: eg, ProducerProxy producerProxy; in a method
+
+DAO: Data access object
+ORM: Object-relation mapping. eg: Popular open source ORM products include Doctrine, Hibernate, iBATIS and JPA implementations such as Apache OpenJPA.
+
+acceptance testing is a test conducted to determine if the requirements of a specification or contract are met. Acceptance testing is also known as user acceptance testing (UAT), end-user testing, operational acceptance testing (OAT) or field (acceptance) testing.
+
+In principle, unchecked exceptions indicate bugs, and checked exceptions indicate problems outside your control. 
+
+IAP: Inventory Availability Pool.
+MM: Marketplace Merchant.
+caseYield: quantity per case
+
+If we don't really need the parameter, we can give them null in unit test
+
+The @JsonCreator annotation is useful in situations where the @JsonSetter annotation cannot be used. For instance, immutable objects do not have any setter methods, so they need their initial values injected into the constructor. 
+
+Most tests are writed in the beginning, but some of them are added after some bug found that origin test didn't cover.
+
+try/catch is used to solve this problem right here and only give a warning message, not let it's caller know;
+While throws is to ignore this problme here and let it's caller know and handle this problem.
+
+Update JDK may cause some problems, don't update them especially while u are working on something.
+
+Abstract classes may have abstract methods. Abstract methods are methods without implementations and these must be implemented by your subclass (unless you make your subclass abstract too). Abstract classes cannot be instantiated.
+
+Read wiki multiple times, you will get different understanding every time you read it
+
+Try youself first although it may take much time, don't ask before you try for some time, it's a learning experience
+
+One code review per day
+
+KINESIS? Amazon Kinesis is a platform for streaming data on AWS, offering powerful services to make it easy to load and analyze streaming data, and also providing the ability for you to build custom streaming data applications for specialized needs.
+
+fluxo --> cut ticket
+
+HappyTrails: AAA issues, sync host from my 1-click beta environment
+Ant is extended using Java class, the configuration file is xml; while "Make" is shell based, so it's depended on OS and easy to make sytax error when writing commands.
+Apache Ivy is a dependency manager.
+
+Injectable VS Mocked: https://phoenixjiangnan.github.io/2016/04/06/test/jmockit/Unit-Test-JMockit-What-are-the-differences-between-Mocked-and-Injectable-in-JMockit-and-when-to-use-Injectable-rather-than-Mocked/
+
+static nested class:  this [static nested] class does not need an instance of the enclosing class in order to be instantiated itself. 
+	Example: 
+	public class Test { 
+	  class A { } 
+	  static class B { }
+	  public static void main(String[] args) { 
+	    /*will fail - compilation error, you need an instance of Test to instantiate A*/
+	    A a = new A(); 
+	    /*will compile successfully, not instance of Test is needed to instantiate B */
+	    B b = new B(); 
+	  }
+	}
+
+ExternalClientID --> ChainID --> PO
+Same stuff has the same ASIN, no matter how they aggregated
+ASIN + vendor code, we can get the aggregate level
+Planned PO --> haven't called PO service
+Actual PO --> reserved and submitted
+FAB send PO request(externalID included) to PO service, PO service reply a chain ID immedately and verify the request, if it is valid, send a message to it's SNS. FAB register a SQS on it's SNS and will receive message if PO request if finished.
+
+"big-O" ignores data storage latencies, topology, volume, available memory, and even the computational cost of every CPU instructions involved in a given implementation – instead, it merely counts the number of algorithmic operations! Big-O can be a valuable indication when designing algorithms but the best performing and scaling solution depends on the particular constraints of any specific problem and environment. 
+
+External_client_ID in fab_reporting.crossdock_actual_po_requests is the same as fab_po_request_uuid in fabcore.purchase_order_requests
+
+If there are serval class that have much in common, we can let other classes extends one of them. We don't have to make it abstract.
+
+Search action or option name in IntelliJ:  command + shift + A
+look recent files you open: command + E
+Go back and forth through the history of visited tabs: command + [, command + ]
+Navigate from the current tab to the next or previous tab: command + shift + [, command + shift + ]
+Copy one line: command + D
+delete one line: command + delete
+
+Use "any" to represent the things that u don't care
+shift + alt + left click/mouse middle click drag: multicursor
+
+The value of a final variable can only be set once. The constructor is the only place in the code for a class that you can guarantee this will hold true; the constructor is only ever called once for an object but other methods can be called any number of times.
+
+Ser/Des test, test cases: test empty, normal and null.
+Use assert instead of System.out.print() since it's didn't need to look at the output to determine whether it is right
+
+If you have somewhat of a legacy application, and you're not allowed to change the visibility of your methods, the best way to test private methods is to use reflection.
+Internally we're using helpers to get/set private and private static variables as well as invoke private and private static methods. The following patterns will let you do pretty much anything related to the private methods and fields. Of course you can't change private static final variables through reflection.
+Method method = targetClass.getDeclaredMethod(methodName, argClasses);
+method.setAccessible(true);
+return method.invoke(targetObject, argObjects);
+And for fields:
+Field field = targetClass.getDeclaredField(fieldName);
+field.setAccessible(true);
+field.set(object, value);
+Notes:
+1. targetClass.getDeclaredMethod(methodName, argClasses) lets you look into private methods. The same thing applies for  getDeclaredField.
+2. The setAccessible(true) is required to play around with privates.
+
+
+Often, developers spend a huge amount of time and effort in writing test cases that ensure the application works as expected. However, it is important to test negative test cases as well. A negative test case is a test case that tests if a system can handle invalid data. For example, consider a simple function which reads an alphanumeric value of length 8, typed by a user. In addition to alphanumeric values, the following negative test cases should be tested:
+
+User specifies non – alphanumeric values like special characters
+User specifies blank value
+User specifies a value which is larger or smaller than 8 characters
+Similarly, a borderline test case tests if the system works well for extreme values. For example, if a user is expected to enter a numeric value from 1 to 100, 1 and 100 are the borderline values and it is very important to test the system for these values.
+
+shift + F6 to refactor(rename)
+command + p: hint for method signature
+
+When you copy stuff from other files, it may copy it's package and class info. Eg: I coped a Logger from another class, it automatically copy the "import static com.amazon.fresh.fab.common.proxy.interfaces.RtipProxy.LOGGER;" from the original class, while I am intending to create my own Logger.
+
+format your common variables for a test better so that when someone else comes back to this test later, they don't have to puzzle out what is going on. For example, all of the constants here should be private static final variables with capitalized names with underscores: VENDOR_CODE, ASIN, etc.
+
+avoid using LocalDate.now() in these types of tests, especially if there's timezones involved. You can pick a date that represents your "start" for the test. I tend to use something easy to remember and do math on, like new LocalDate(2016, 1, 1).
+
+You should also try to group constants together logically with newlines between groups
+
+Unit test doesn't mean that you can assume the method is only execute once.
+
+pull the call to datebase out of the normal method.
+
+Assert(expectedValue, actualValue): The expectedValue comes first
+
+http://junit.org/junit4/(
+Assertions
+Test Runners
+Aggregating tests in Suites
+Test Execution Order
+Exception Testing
+Matchers and assertThat
+Ignoring Tests
+Timeout for Tests
+Parameterized Tests
+Assumptions with Assume
+Rules
+Theories
+Test Fixtures
+Categories
+Use with Maven
+Multithreaded code and Concurrency
+Java contract test helpers
+Continuous Testing
+)
+
+JUnit provides overloaded assertion methods for all primitive types and Objects and arrays (of primitives or Objects). The parameter order is expected value followed by actual value. Optionally the first parameter can be a String message that is output on failure. There is a slightly different assertion, assertThat that has parameters of the optional failure message, the actual value, and a Matcher object. Note that expected and actual are reversed compared to the other assert methods.
+
+Exception testing(https://github.com/junit-team/junit4/wiki/Exception-testing)
+
+The @Test annotation has an optional parameter "expected" that takes as values subclasses of Throwable. 
+@Test(expected = IndexOutOfBoundsException.class) 
+public void empty() { 
+     new ArrayList<Object>().get(0); 
+}
+
+When to use fail in unit test?
+mark a test that is incomplete, so it fails and warns you until you can finish it
+making sure an exception is thrown:
+
+@Test
+public void testExceptionMessage() {
+    try {
+        new ArrayList<Object>().get(0);
+        fail("Expected an IndexOutOfBoundsException to be thrown");
+    } catch (IndexOutOfBoundsException anIndexOutOfBoundsException) {
+        assertThat(anIndexOutOfBoundsException.getMessage(), is("Index: 0, Size: 0"));
+    }
+}
+
+prefer asserThat than assetEqual ...
+
+The default JUnit runner treats tests with failing assumptions as ignored. 
+
+Execute order: 
+@BeforeClass setUpClass
+@Before setUp
+@Test test2()
+@After tearDown
+@Before setUp
+@Test test1()
+@After tearDown
+@AfterClass tearDownClass
+
+If you really need to learn something, learn it throughly, otherwise you need to come back and learn it again from beginning
+		
+If the task needs more than one week to implement, call a design review meeting, even a simple and informal one.
+
+RTIP is the Real-Time Item Processor. RTIP is the pipeline that reconciles, validates and normalizes Retail catalog data. It's the process that uses multiple vendor feeds to assemble Amazon’s retail view of an item.
+
+we can use slowTest and fastTest to separate different test to save some time when running fast test.
+
+Dependency Inversion: 
+High level modules should not depend upon low-level modules. Both should depend upon abstractions.
+Abstractions should never depend upon details. Details should depend upon abstractions.
+
+Open/Closed:
+It means that you should put new code in new classes/modules. Existing code should be modified only for bug fixing. New classes can reuse existing code via inheritance. Open/closed principle is intended to mitigate risk when introducing new functionality. Since you don't modify existing code you can be assured that it wouldn't be broken. It reduce maintenance cost and increase product stability.
+
+You don't add testability by adding tests. You add testability by using SOLID design.
+
+The test class above shows something unusual: the second test method declares a parameter! Normally, JUnit/TestNG test methods are not allowed to have parameters. When using JMockit, however, such mock parameters are allowed. In general, it's best to use mock fields of the test class only when the mocked types are needed by most or all tests in the class. Otherwise, mock parameters with scope limited to a single test are preferred. JMockit will always take care of instantiating the mocked type and either assigning the instance to the mock field (provided the field is not final) or passing it as an argument when the test method is invoked by the test runner.
+
+Do we prefer to use dummy or matcher? NO, we don't prefer to use matcher since it's not strong
+
+
+SKills: The best way to test multithreads code is to reduce the complexity of threaded code as much as possible. Minimize areas where threads interact, test as best as possible, and use code analysis to identify danger areas. 
+http://stackoverflow.com/questions/12159/how-should-i-unit-test-threaded-code
+
+expectation also can be a separate method
+Matcher: assertThat(result, either(is(1)).or(is(2))); 
+		assertThat(result, isOneOf(1, 2, 3))
+		assertThat(result, isIn(theCollection))
+		assertThat(result, anyOf(equalTo(1), equalTo(2), equalTo(3)))
+
+Type migration: Alt + enter
+
+"git revert" will automatically make another commit with the old verison code
+Use "git revert -n" to revert to old version and keep the file changes
+Don't use "git rebase" when you are not sure you are all set, it will destroy the history and maybe be very hard to recover
+USe "git pull rebase" to pull the changes from remote
+
+The only time fields on test classes should be static is when they're static and final (constants like you've got above here). Otherwise, they should be fields if they are used in multiple tests or set as parameters for @Parameterized tests. Otherwise, everything should be method local so we don't run into weirdness where tests fail because they run in a different order than we expected. --zev
+
+git - pushing specific commit: git push <remotename> <commit SHA>:<remotebranchname>
+
+AutoComplete without appending --> Tab
+
+Deencapsulation.getField() reflection to get private field
+
+When remove a package, close ninja-sync first, don't let ninja-sync help, or you will have problem in delete package in cloud
+
+--no-review-guess to generate new cr
+
+If you use some tech you don't familiar, please sure to check the doc and examples
+		
+When puting code into a class, think whether it is the best place to put it 
+
+Work on subtasks separately, create a local branch after finish a task!!! That works fantastic!
+
+Trace - Only when I would be "tracing" the code and trying to find one part of a function specifically.
+Debug - Information that is diagnostically helpful to people more than just developers (IT, sysadmins, etc.).
+Info - Generally useful information to log (service start/stop, configuration assumptions, etc). Info I want to always have available but usually don't care about under normal circumstances. This is my out-of-the-box config level.
+Warn - Anything that can potentially cause application oddities, but for which I am automatically recovering. (Such as switching from a primary to backup server, retrying an operation, missing secondary data, etc.)
+Error - Any error which is fatal to the operation, but not the service or application (can't open a required file, missing data, etc.). These errors will force user (administrator, or direct user) intervention. These are usually reserved (in my apps) for incorrect connection strings, missing services, etc.
+Fatal - Any error that is forcing a shutdown of the service or application to prevent data loss (or further data loss). I reserve these only for the most heinous errors and situations where there is guaranteed to have been data corruption or loss.
+
+git tag -d tagName: to delete a tag
+
+dryrun: brazil ws --dryrun -p pkg1 -p pkg2: this will upload your local code to build.amazon.com to start a dryrun
+Use git pull --rebase
+git push origin dev
+
+cr: A factory should not have to be recreated for each object it creates, and it should generally be stateless.
+
+Never use rebase on public branch
+After finish a task and push that branch, delete that branch because you no longer need it
+
+We can use @Parameter and switch/case to write test in a clear way
+We can make testcase such as "BeforeClass" and "AfterCLass" a class, so we can reuse it in other classes
+
+Git merge local change to dev:
+git checkout dev
+git merge --no-ff myFeature
+The --no-ff flag causes the merge to always create a new commit object, even if the merge could be performed with a fast-forward. This avoids losing information about the historical existence of a feature branch and groups together all commits that together added the feature.
+
+http://nvie.com/posts/a-successful-git-branching-model/
+git log -g: can see all the local log info including the ones you already rebased
+
+Logger.error/warn/info... doesn't have the String format built in, you need to write it explictly. eg:  LOGGER.error(String.format("Failed to retrieve run record from fabcore database with outputId: %s",outputId)); 
+
+Whenever I pull, under most circumstances I git pull --rebase. This is because I like to see a linear history (my commit came after all commits that were pushed before it, instead of being developed in parallel). It makes history visualization much simpler and git bisect easier to see and understand.
+
+
+A specific circumstance in which you should avoid using git pull --rebase is if you merged since your last push. You might want to git fetch; git rebase -p @{u} (and check to make sure the merge was recreated properly) or do a normal merge in that circumstance.
+Another specific circumstance is if you are pulling from a non-authoritative repository which is not fully up to date with respect to your authoritative upstream. A rebase in this circumstance could cause the published history to be rewritten, which would be bad.
+
+Wall-time: it is the difference between the time at which a task finishes and the time at which the task started
+
+Naming: private Long transshipDelta; /* time between hub arrival and spoke arrival in millis */
+ 		Should be named as "transshipDeltaMillis"
+
+Ctrl + Tab to switch tabs
+
+Carnaval is the overall(aggregate) alarm, which can cut ticket; cloudWatch is the aws alarm, we can connect cloudWatch and Carnaval by adding field in Carnaval; But Carnaval is hard to config, so we have ZIOps to help us config the alarm system.
+
+Sometimes the number key on the keyboard are not recongnized correctly.
+
+CREATE INDEX for things you want to query in a large table. If you don't need to query it, don't create it.
+eg: CREATE INDEX `i_crossdock_actual_po_spoke_fc_id` ON `fab_reporting`.`crossdock_actual_po_requests` (`spoke_handoff_date` DESC, `spoke_fc_id` ASC, `spoke_iog` ASC, `source_asin` ASC);
+If you want to query `spoke_handoff_date` and `spoke_fc_id`, you don't need to create a new one. You already got it.
+But if you want to query `spoke_iog` and `source_asin`, you need a new query.
+
+Shift + Command + { }: switch tabs in Terminal
+
+There are three components to good software: design, performance, and documentation. Software that's well-designed, performs acceptably, and well-documented, is good software. 
+
+Brazil's package is different from java's package
+
+Shortcut for Outlook: Command + 1,2,3,4 --> mail, calendar, contacts, tasks
+					  Command + j --> Forward a mail
+					  Command + n --> compose a new mail
+
+shortcut for chrome: command + d ---> bookmark this page
+					home, end to scroll to head or end of a page
+					command + 1, 2, 3...
+
+
+Use spotlight to launch apps
+
+Command + l --> focus and select web browser's address bar
+command + shift + -> or <- : select the whole line
+shift + -> or <- : select char by char
+alt/option + -> or <- : move cursor word by word(also works in terminal, awesome!)
+ctrl/option/alt + backspace: remove word by word
+shift + option/alt: select the whole word 
+shift + home : select from current to beginning
+shift + end : select from current to end 
+
+If you need to make a interface from an exist class, you can use "extract class"
+
+
+Spring: Aspect: PointCut, aspect and advisor
+		wildcard: * *.*(..) this first one is return type, the second is the class name, the third is the method name, the forth is the args type
+
+		instanceOf ClassName/InterfaceName
+
+Sublime: Insert date: command +d, command +d
+
+Chrome: Open a duplicate tab: command + L to focus on the address bar and then alt + enter to open a new duplicate one in new tab
+
+AWS service: NA --> US.East			
+EU --> EU.West-1
+JP --> US.West-2
+
+Story points and task points are like the weight and height of an elephant, it's relavant but not necessary same
+
+If the code you didn't checked out is pushed but failed on pipeline due to other changes, even if you got the latest versionset and code, it will not compile or failed since the versionset didn't have the code change. If you checked out this package in local, you can got the latest code change and thus succeed in local
+
+There is a File Type in IntelliJ which you can choose which file type to ignore and which to recongnize. If you put a file type in ignore field, it will not be recognized by IntelliJ, thus the import that kind of file will not be resolved.
+
+FAB's three services: fetching computing orchstrictor
+
+Controller should be thin and do nothing actual job, it's just a controller or manager.
+
+Multithread is hard to test and thus we should avoid test multithread as we can. We can break the multithread part into a single class and test it in single thread.
+
+Hot swap failed in IntelliJ: You are attempting to change your source code while the program (or IntelliJ's debugger) is still running. 
+
+Lamda expression will create an anonymous class, which is hard to test
+
+"This" keyword in Builder class means builder itself
+
+Ctrl + Command + F to toggle full screen model
+
+Use @ignore to ignore the test you don't need to run, especially in integration test which is time consuming. But remember to remove it afterwards.
+
+Blue-green deployment is a release technique that reduces downtime and risk by running two identical production environments called Blue and Green. At any time, only one of the environments is live, with the live environment serving all production traffic. For this example, Blue is currently live and Green is idle. (https://docs.cloudfoundry.org/devguide/deploy-apps/blue-green.html)
+
+If there are two and maybe more cases in the futrue, we can use switch/case statement to control the flow. Remember to add "break" after each case! If there are two cases and they have some common code, don't save these code to put them together instead make it clear that each peration in each case.
+
+https://www.linkedin.com/pulse/amazonians-response-inside-amazon-wrestling-big-ideas-nick-ciubotariu
+
+FetchType.lazy and FetchType.eager: http://stackoverflow.com/questions/2990799/difference-between-fetchtype-lazy-and-eager-in-java-persistence-api
+
+ONCALL: Correspondence, work Log, root cause and resolution
+		Route ticket to
+		If a ticket is put into researching area for more than 90 minutes, it will escalation to your manager. But if you put into pending stage, it will not.
+
+		Tips:
+		Focus on addressing the customer impact first
+		check the obvious -- look at yur metrics
+		determine what has recently changed
+		Don't make more than one major change at a time
+		Document any changes you've made
+		Be prepared to rollback
+		Search for resolved tickets with the same issue/CTI
+		check if there has been a recent ccode deployment
+		consider trying an active, bounce, or rollback
+		keep calm and reach for help
+
+		When oncall:
+		Your first priority is to handle high severity events. Put the fire out.
+		Your second priority is to protect the productivity of your team. As the oncall it is your duty to protect your team from being pulled off of their work into operational issues. You do this by owning the team's operations and proactively jumping on emails, escalations, and any questions that may distract them. Your co-workers will thank you for this, and will hopefully return the favor when you return to project work (and they're oncall!)
+
+		Shadowing ideally last about 2 weeks and looks something like this:
+		During the first week you shadow the primary, handling low severity tickets during the day and reviewing any high severity tickets with the primary after they have resolved the issue.
+		Next, beginning on a Friday, any time a high severity ticket comes in, the primary pages you in -- at the time the ticket happens -- day or night. During this phase, you work the ticket with coaching from the Primary.
+		At the end of the weekend, on Monday, your roles reverse. You become the primary with a secondary to back you up. During this phase you have the option to page in the secondary but only when you need it. You both then debrief on any high severity tickets the morning after they occur.
+		The next time you go oncall, your team can decide to give you a secondary backup or you can fly solo.
+
+		Important note about Autocuts
+		Autocut tickets will de-dupe (that is to say "not cut another ticket") as long as the ticket is left open -- even in another queue. So it is not a good idea to reassign them or leave them open. Many teams will close the ticket, as soon as a monitor is out of alarm, open a Root Cause Action Ticket and relate the Autocut ticket to it. On a related note, it's not a good idea to 'Pending Requester info' (to avoid the escalation feature). You might miss an alarm.
+		Additionally, if someone reassigns an Autocut ticket to you, don't reject it or forward it to another group. Close it and link a new ticket to the original Autocut -- at the same severity -- then work it or re-assign it to the new group.
+
+		Tickets have two separate diary entry types:
+		Entries put into the Correspondence field are emailed out to all individuals on the Cc: list
+		Worklog entries are not.
+
+		Update early, update often
+
+
+Tips for CM: The title should be abstract and should not include technical details.
+			When things went wrong, repsonse should be "Rollback and fix it"
+
+Dry-run before you push(brazil ws dry-run)
+
+2016-12-13
+Learn: Coral service can generate some code for you, so some code cannot be resolved until do a "brazil-build generate" and mark the generated-src as src. The way to generate the code is defined in the model.xml.
+
+Coral is generated by Hex.
+
+The command to deactive FABToolsWebsite apollo env: sudo /apollo/bin/runCommand -e FABToolsWebsite -a Deactivate
+The command to active FABToolsWebsite AAA: sudo /apollo/bin/runCommand -e FABToolsWebsite.CONSUMES.AAASecurityDaemon -a Activate 
+That also helps to solve the AAA not signed issue.
+
+REMOTE DEBUG: FABTools port 5050
+			  FabService port 5050: Use coral diver to trigger the breakpoint
+
+If your apollo env is active, when you run your dev, it actually runs on apollo; If you deactive it, it will then run on your dev desktop. Since they are running in the same port.
+
+Don't necessary to get everything done, finish the important first!
+Skills: IntelliJ F2 to go to the next/previous error
+
+2016-12-14
+By default, running git stash will stash:
+* changes that have been added to your index (staged changes)
+* changes made to files that are currently tracked by Git (unstaged changes)
+But it will not stash:
+* new files in your working copy that have not yet been staged
+* files that have been ignored
+
+git stash save {message}
+
+git stash -u : also stash  untracked files(not added new files)
+git stash -a: also stash ignored files
+git stash -p: partial stash
+git stash drop stash@{1}: clean up your stash
+git stash clear: delete all of your stashes
+
+
+Vim:
+a	Append text after the cursor [count] times.
+A	Append text at the end of the line [count] times.
+i	Insert text before the cursor [count] times.
+I	Insert text before the first non-blank in the line [count] times.
+o	Begin a new line below the cursor and insert text, repeat [count] times.
+O	Begin a new line above the cursor and insert text, repeat [count] times.
+u   undo
+ctrl + r: redo
+0   jumps to the beginning of the line
+$   jumps to the end of the line
+^   jumps to the first non-blank
+g_ → go to the last non-blank character of line
+H/M/L  jump directly to the high/middle/low of the screen
+G   jumps to the end of the file or the line# typed before it
+NG → Go to line N
+gg → shortcut for 1G - go to the start of the file
+Use w,b,e to move along "words".
+* (resp. #) : go to next (resp. previous) occurrence of the word under the cursor
+Use R to enter insert mode with an overstrike cursor, which types over existing characters
+f   followed by another key, moves the cursor to the next instance of that character on the current line.
+F   Do backwards as f
+t/T Do the same as f/F, but stop right before the character
+w   Next word
+d   delete, followed, by any motion deletes the text between the cursor and that motion's destination(eg.: dw df_)
+d5d to delete 5 lines from the cursor
+c   change, does the same as d, but leaves you in insert mode
+p   paste
+y   followed by any motion to copy(yy copy the current line)
+text deleted by d,c,x is also copied
+/   search 
+?   search backwards
+n   repeats the last search in the same direction and N do backwards
+Be careful that this search target is interpeted as regular expression: a*b means zero or more 'a's followed by a 'b'; ^abc means 'abc' at the beginning of a line;
+[0-9] looks for the next digit
+%   jump between matching pairs of '(', ')', '[', ']'
+-/+ jump to the previous/next file
+r   followed by any character replaces the current character with that one
+J   joins the current line with the next one 
+cw → replace from the cursor to the end of the word
+:e <path/to/file> → open
+:saveas <path/to/file> → save to <path/to/file>
+N<command> → will repeat the command N times.
+
+Remember about the importance of vi moves? Here is the reason. Most commands can be used using the following general format:
+<start position><command><end position>
+For example : 0y$ means
+0 → go to the beginning of this line
+y → yank from here
+$ → up to the end of this line
+
+
+
+
+k 上
+j  下
+h  左
+l  右
+
+(	[count] sentences backward
+)	[count] sentences forward
+{	[count] paragraphs backward
+}	[count] paragraphs forward
+
+.: repeat the last command
+%: The '%' motion moves from a parenthesis (or similar grouping character) to its matching one 
+
+
+
+DateTime/Date/Instant
+        System.out.println(new DateTime(2016, 12, 13, 2, 5, 5).toDate().toInstant());
+        System.out.println(new DateTime(2016, 12, 13, 2, 5, 5).toDate());
+        System.out.println(new DateTime(2016, 12, 13, 2, 5, 5, DateTimeZone.forID("America/Los_Angeles")));
+
+        2016-12-13T02:05:05Z
+		Tue Dec 13 02:05:05 UTC 2016
+		2016-12-13T02:05:05.000-08:00
+
+SKills: Alt + Command + left/right to navigate btw previous view positions
+
+2016-12-15
+Skills:  Vim:  'f' followed by any other character to find its next occurrence, '%' to use matching parens to go where you want to go, etc... When navigating the file, you have motions to go to the top/middle/bottom of the screen directly, '/' which is effortless to type to search for a string, ']]' and the likes to navigate by functions, etc. 'H', 'M' and 'L' take the cursor directly to the 'H'ighest, 'M'iddle, or 'L'ower line on the screen. 
+
+Terminal: 
+
+Using the clipboard: pbcopy copies what is given to it by stdin into the clipboard. pbpaste pastes what is in the clipboard to stdout.
+You can open the curent directory in Finder by typing open .. In fact, you can open a file the same way opening it in finder would work by typing open <filename>.
+Use opensnoop to see which files are being modified live. You can narrow it down to a process or a particular file, by using the -p or -f arguments, respectively.
+Make the computer speak (literally) by typing say <sentence>. This comes in handy for keeping track of what your shell script is doing while you are away from the computer.
+Assuming you have set vi mode for bash, hit Escape+v to edit the current command line you are writing in vim. Very useful if you are working on a long command.
+
+
+Remote login my work mac: ssh lujiabin@9801a790b6f1.sea.amazon.com
+
+Do another thing after some thing is done"
+Generally, if you know this before running the command, you can just start it with:
+command; command-after &
+This will execute the command-after after the previous command has exited (regardless of its exit code). The & will start it in background.
+If you care about a successful or failure exit, respectively use:
+command && command-after-only-if-success &
+command || command-after-only-if-fail &
+
+
+Leadership: Where possible the users shouldn’t be the ones noticing an issue first.
+
+
+English: potluck --> a meal or party to which each of the guests contributes a dish.
+
+
+2016-12-16
+Three Advantages: Deliver results, Think Big, Learn and be Curious
+Three not understand well: Bias for Action, Are Right, A Lot, Ownership, Have Backbone; Disagree and Commit
+
+Permission: odin credential, apollo, aws account, AAA
+
+T-shirt sizing?
+FCs that don't have POs in the last 30 days:
+NA:  UNJ1 UWI1 UNC1 UPA1 HWA2 UIL2 UFL2(N) 
+
+EU: HUK2 UED1 (N)
+
+
+2016-12-19
+SQL: 
+Comments: -- single line; /*  */ multiple lines
+LIKE: SELECT * FROM Customers WHERE City LIKE 's%';
+Wildcard: 
+Wildcard	Description
+%			A substitute for zero or more characters
+_			A substitute for a single character
+[charlist]	Sets and ranges of characters to match
+[^charlist]
+or          Matches only a character NOT specified within the brackets
+[!charlist]
+
+The IN operator allows you to specify multiple values in a WHERE clause.
+The BETWEEN operator selects values within a range. The values can be numbers, text, or dates
+
+SQL aliases are used to give a database table, or a column in a table, a temporary name.
+Basically aliases are created to make column names more readable.
+
+INNER JOIN: Returns all rows when there is at least one match in BOTH tables
+LEFT JOIN: Return all rows from the left table, and the matched rows from the right table
+RIGHT JOIN: Return all rows from the right table, and the matched rows from the left table
+FULL JOIN: Return all rows when there is a match in ONE of the tables
+
+The UNION operator is used to combine the result-set of two or more SELECT statements. UNION selects only distinct values. Use UNION ALL to also select duplicate values!
+
+The SELECT INTO statement selects data from one table and inserts it into a new table.
+
+The INSERT INTO SELECT statement selects data from one table and inserts it into an existing table. Any existing rows in the target table are unaffected.
+
+ In SQL, we have the following constraints:
+
+NOT NULL - Indicates that a column cannot store NULL value
+UNIQUE - Ensures that each row for a column must have a unique value
+PRIMARY KEY - A combination of a NOT NULL and UNIQUE. Ensures that a column (or combination of two or more columns) have a unique identity which helps to find a particular record in a table more easily and quickly
+FOREIGN KEY - Ensure the referential integrity of the data in one table to match values in another table
+CHECK - Ensures that the value in a column meets a specific condition
+DEFAULT - Specifies a default value for a column
+
+Indexes allow the database application to find data fast; without reading the whole table.
+The users cannot see the indexes, they are just used to speed up searches/queries.
+Updating a table with indexes takes more time than updating a table without (because the indexes also need an update). So you should only create indexes on columns (and tables) that will be frequently searched against.
+
+
+Aurora: MySQL(RDBMS)
+Redshift: postgresql (ORDBMS)
+
+
+2016-12-20
+Caused by: java.lang.IllegalArgumentException: Could not resolve placeholder 'aws.rsc.async.topicArn' in string value "${aws.rsc.async.topicArn}"
+
+CR: The better user experience would be to  actually fix the date picker to not error on a mm/d/yyyy format.  8/12/17 will return an empty date too.  Will the date picker support a m/d/yyyy format?
+
+2016-12-21
+FOOD KinisisConsumer --> TodWorker
+To setup SWF Flow-Framework in IntelliJ you should first understand additional things that happen during build. There are 2 main things:
+Flow Framework uses java Annotation Processor Tools (aka APT, details: http://docs.oracle.com/javase/7/docs/technotes/guides/apt/) to generate java clients for activities and workflows.
+AspectJ is used to weave the code executed by workflow. More exactly it weaves the @Asynchronous and @ExponentialRetry annotations.
+
+Annotation Processing Tool (apt): The apt tool first runs annotation processors that can produce new source code and other files. Next, apt can cause compilation of both original and generated source files, thus easing the development cycle.
+
+SOP: Standard Operation Procedure
+
+"baking" (leaving a build in Devo for a while to see what happens)
+
+RediFork solves a problem that many teams have in regards to moving towards full Continuous Deployment: manual bake time. 
+
+2016-12-22
+1. Attend office hour is much more efficient than looking at wiki ourselves
+
+2016-12-23
+AppConfig --> Brazil-config
+po_requests_to_place is the really POs we suppose to place
+
+2017-01-03
+Vendor confindence meeting: FSS --> 
+		POService --> 
+		Fill rate --> 
+		Rejection rate -->
+		AFT/AFT light: Where data store, publish
+		on-time rate -->
+		Imbound time, VLT, vendor selection service
+		sable, dynamoDB
+
+Q: now got changed?
+
+
+Q: WHy I need to have AAA support right now?
+
+2017-01-04
+Dev
+Mainline?
+
+
+2017-01-05
+Stack setup
+
+LPT(Live Pipeline Templates)
+CloudFormation Designer, CloudFormer
+
+
+HappyTrail HappierTrail AAA
+
+
+2017-01-06
+ONCALL: If the SWF failed, 
+if it is caused by timeout, rerun may solve the problem. (If the crossDock failed, you need to delete the `crossdock_actual_po_requests` date with the failed outputId)
+If it is caued by other reason, look into the logs in Timber(timber-iad, timber-pdx, timber-dub)
+
+
+TODO: Look at 1 cr per day and spent 2 hours to look at the source code every week
+	Look at tickets in 6 weeks especially sev2
+
+
+	All log file are located here: /apollo/env/FreshAutomatedBuyingSerivce/var/output/logs/
+Query Log
+service_log.* - All timing and other metrics are logged to this file
+Process Manager:
+PMAdmin.log - What did the service do while starting up and any errors encountered while starting up are logged here
+Message Processor Log
+MessageProcessor.* - Logging about the messages retrieved from the queue and their contents
+Application Log
+FreshAutomatedBuyingService.log.* - High level log of activities in FabOrchestration, FabCalculation, and Job Configuration (FC, execution date, runId, outputId, demand forecast model, etc)
+FabServiceUncaughtExceptionHandler.* - Log of all uncaught exceptions trying to escape FabCalculation Threads
+Job Execution Logs
+FabricService.* - All Fetching Data actions are logged here
+FabCoreService.* - All Calculation actions are logged here
+DataWarehouse.* - All logs for persisting data to FabCoreDB which will eventually go to DW are logged here
+SimpleWorkflowExecution.* - All Workflow and Activity actions are logged here
+
+
+2017-01-08
+AWS console: US --> US EAST N.Virginia
+			JP --> US West Oregon
+			EU --> EU Ireland
+
+How to check there is no PO placed?
+Check the run_id of the fc, get the fabricOutput S3 link from the fabcore run table. Go to that link by attach the link after "https://fab-tools.amazon.com/s3Download.request?s3key=" . Which field to look at?
+
+- shrikant said for no POs cut tts, look at roq.csv, filtered asins, and vendor minimum csv
+ = but in this case where we have a no PO alarm for HTX2,
+ = SELECT * FROM fab_reporting.pog_po_schedules where output_id = '6d35f203' and order_date = '2017-01-09 00:00:00';
+ = and see that there are no results, and say that we aren't scheduled to order that day
+
+VLT: From order placement time to the expected arrival time
+VHO: Same as EVSD
+Pad Days: Additional days to be added into buying period, this will increase the quantity we buy. If the buying period is longer than the shelf life, it will be truncated to the shelf life.
+
+FAB Onebox test: rerun a runId on coral explorer and then compare these two runs on Fabtools website 
+
+
+2017-01-10
+[Infosec scan] tt?
+OnexBox and Gamma talk to prod fabcore and fabric database 
+OnexBox and Gamma (anything with the domain of “master”) talk to the devo fab_reporting database, not prod.
+
+Talk to ISM: Rejection rate
+
+
+TO ASK: What does "serialVersionUID" do?
+   Why do we "breakCycles" in TopologyFactory?
+
+
+ 2017-01-11
+ blurb: summary
+
+ Where do these message come from? Is it valid or accurate enough?
+
+ *.*.fabric.hibernate.c3p0.timeout = 44000;?
+
+ fab-reporting hibernate master -- slave 
+
+ 2017-01-12
+Thw SQL workbench's click column sort only sort the current limit 1000. We need to use order by desc to really get the latest one.
+
+
+2017-01-13
+
+IAD --> NA prod
+PDX --> JP prod && NA test
+DUB --> EU --> GB && UK prod
+
+Redfort is showing VIPs that are not owned by my team
+This might be happening because the VIP management is returning those VIPs for your FQDN. Some times, due to overlapping IPs in different regions, VIP management returns some unrelated VIPs for your certificate. You can contact VIP Management for more details.
+
+
+zgrep keyword files(regular expression) 
+
+TO ASK: 
+between two days before the ROQ calculation (for late POs which have not yet been received) and the end of the interval. 
+
+
+Add sim link to cr
+
+
+Work on Sev2: 
+Crumpler, Carrie: (8:17 PM)
+so when working a sev 2, you want to engage the customer and provide status and feed back.  Like when there was the group discussion on IM
+Crumpler, Carrie: (8:18 PM)
+talking to them and making sure you understand their problem
+Crumpler, Carrie: (8:18 PM)
+engaging them and letting them know that you are active working their problem earns trust
+Crumpler, Carrie: (8:19 PM)
+items like we found the problem,  or delays, or things like that need to go into the tiket too 
+
+
+2017-01-14
+RunId comes from outputId: 
+RunRecord runRecord = fabCoreDataProxy.getRunRecord(outputId.getValue());
+RunId runId = RunId.fromString(runRecord.getRunIdentifier());
+
+To Ask: Why arrival date in PoserviceInput.json could be early then the run?
+
+2017-01-15
+happytrail.env: if TOD, eleif dev-dsk
+What to do between Vendor minimum and out-of-stock?
+
+
+Vendor Minimums Calculator
+Checks to see if the ROQs for the current buying period meet the Vendor Minimums. If it does not, it extends the buying period and uses the values computed by the ROQ Calculator beyond the buying period to increase the ROQs until a solution is found that meets the minimums. If no solution is found the Purchase Order Group is flagged for manual action by an ISM in the Email Report.
+
+https://w.amazon.com/index.php/AmazonFresh/RegionalSupplyChain/Fresh_Automated_Buying/Architecture 
+FAB Calculation
+
+        /*
+         * In order to figure out how much to buy, consider the following example. Take a sample month from calendar:
+         *
+         * M  Tu W  Th F  Sa Su
+         * 1  2  3  4  5  6  7
+         * 8  9  10 11 12 13 14
+         * 15 16 17 18 19 20 21
+         * 22 23 24 25 26 27
+         * 28 29 30 31
+         *
+         * Consider the following vendor schedule:
+         * Thursdays: leadtime = 14 days
+         * Saturdays: leadtime = 14 days
+         *
+         * Therefore, we will only submit orders to the vendor on Thursday or Saturdays.
+         *
+         * If roqCalculationDate = Thursday the 4th, the buying period will be from the 18th to the
+         * 22nd. Why? Because the next possible PO arrival date is the 18th given the lead time, and after that the next
+         * possible PO arrival date is the 20th.
+         *
+         * Interval Keywords
+         *    |-----|---------|----...----|
+         *    A  b  C    d    E     f     G
+         *    A - roqCalculationDate                 b - interval before the Buying Period
+         *    C - start of BuyingPeriod                              d - asinVendorBuyingPeriod
+         *    E - end of BuyingPeriod                                f - interval after the Buying period
+         *    G - Shelf Life, or Max Shelf Life Visibility Limit     [A,G] - roqCalculationInterval
+         */
+
+To Think: com/amazon/fresh/fab/core/lib/SourceRoqCalculatorHelper.java Line 175 Do we need to consider XD_transship PO?
+
+
+2017-01-16
+zgrep: by file and then by time order
+zgrep keyword Rsc* | less
+zgrep keyword Rsc* > .log
+zless
+
+Check host logs
+
+2017-01-17
+nuclear option: Using a rocket to hit a fly
+
+
+2017-01-18
+synchronization
+
+http://www.javaworld.com/article/2077424/learn-java/does-java-pass-by-reference-or-pass-by-value.html
+
+Code to interface, not to implementation
+
+Database's audit_events which audit the changes of a table.
+
+
+2017-01-19
+Fab.core and Fab.fabric database are mysql, they are on the same host since they are small.
+FabReporting database use Aurora, which is also mysql, but developed by Amazon and have a better performance interacting with AWS.
+Redshift cluster is owned by FIP, but the fab table is owned by us.
+FIP will emit the Redshift to datawarehouse.
+
+continuous development: push code and it flow directly to prod without manually operation
+
+When we "bb" on cloud, it uses the build files under the file directory
+When we do "bb server" on cloud, it use the build files(including cfg fiels) on our apollo environment, so you may need to sync your apollo environment when you have problems.
+
+@transient:
+Variables may be marked transient to indicate that they are not part of the persistent state of an object.
+https://stackoverflow.com/questions/910374/why-does-java-have-transient-fields
+
+Ask the person who override it last time to see whether its ok to override it on pipeline.
+
+The main difference between name() and toString() is that name() is a final method, so it cannot be overridden. The toString() method returns the same value that name() does by default, but toString() can be overridden by subclasses of Enum.
+
+Test on all stages.
+
+Think about how to test your code change on bata and onebox when when you write the code
+
+
+2017-01-21
+Command + k : clear the terminal
+
+2017-01-23
+Brazil-config file(.cfg file) save the database name and other configrations.
+
+2017-01-24
+When the Database complain "disk full", you can drop the largest table and recreate it to reduce some size.
+
+Database changes need to be operated in two steps: Change the database and change the code. It should happen in order and two their own CM.
+
+2017-02-07
+Snag: 障碍
+jet lag: 时差
+
+
+2017-02-08
+When errors happen, how could we handle it?
+Fulfillment Network Sku (FNSKU or FnSku) is the identifier for fungible inventory in Amazon fulfillment network (AFN) which can be used to fulfill an order.
+FNSku is assigned by fulfillment systems to identify inventory. It is a 10-character base-36 string, which in some cases is the same as an ASIN, and in some cases is different. Generally, inventory which requires grading (i.e. used or rental inventory) will have multiple FNSkus per ASIN. Any two items identified by the same FNSku are fungible for customer use.
+
+
+TO Learn: Head first design pattern
+
+2017-02-09
+To learn: Ant, Happy trail and happier trail
+
+
+2017-02-10
+You can rebuild the package into pipeline from build.amazon.com
+
+NPE: NULL pointer error
+
+logscan
+
+When asking questions, if u don't understand something, stop them and ask them to explain again. That's the best time to know that.
+
+After push some changes to pipeline, don't always stare at that or thinking about that. Do other things instead.
+
+Read or do what u really want to do at night to not feel sleepy. Or maybe go to a cafe to remain clear-head.
+
+When you are unsure if (usually an exception) message is WARN or ERROR, use WARN. As a general rule when you are not exactly sure what to do with logged data, move towards lower log level
+
+innocuous: harmless/inoffensive
+
+Just rebuilding the package will not fix the problem. The successful implementation of Never Build Twice(tm) in Package Builder means that builds are reused unless the code or its dependencies change. You MUST submit a code change (eg. 'git commit --allow-empty') in order to create an actual new build.
+
+2017-02-12
+
+Internal AWS resources are protected by a system called Midway. 
+
+ado: fuss, trouble
+rehash: put (old ideas or material) into a new form without significant change or improvement
+
+First of all: What’s a Brown Bag Session? “A brown-bag seminar, session or lunch is generally a training or information session during a lunch break. The term “brown bag” refers to the packed lunch meals that are either brought along by the attendees or provided by the host.” (Wikipedia) At my current employer it is called Feed Your Brain and at my former employer it was called Pizza Driven Development.
+
+ransom: a sum of money or other payment demanded or paid for the release of a prisoner.
+copycat: (especially in children's use) a person who copies another's behavior, dress, or ideas.
+kiosk: a small open-fronted hut or cubicle from which newspapers, refreshments, tickets, etc., are sold.
+
+2017-02-13
+Brown bag session and pratice improvement
+
+Knowledge sharing: ROQ calculatation
+
+TODO: write ROQ calculatation knowledge sharing
+
+Get vendor's PO in NoSql?
+
+scsProxy : cost to call;asin: how many?
+DynamoDB: Table design
+Data flow
+
+2017-02-14
+Log time:folder -> PST, file name -> UTC
+
+Gamma talk to fab prod but fab.reporting and redshift devo, since we need the prod input but don't want the gamma output to dirty our prod reporting database.
+
+Find file by name in the current directory: find . -name "foo*"
+
+
+Vim inserting comments while copy pasting(https://stackoverflow.com/questions/7736006/vim-inserting-comments-while-copy-pasting)
+
+: Before entering insert mode to paste, run :set paste. Turn it off once you leave insert mode with :set nopaste.
+
+2017-02-15
+When considering from an old service we have used and a new service we haven't touched, we need to consider the unrealized problems and ramp up time.
+
+    private Callable<LandedCostInfoForAsin> getCallable(BuyableItem buyableItem) throws Exception {
+        return new MetricAwareCallable<LandedCostInfoForAsin>(MetricIdentifier
+                .builder(ScsCallable.class.getSimpleName(), "getLandedCostForAsin")
+                .marketplace(iogL.toString())
+                .clientName("FabricService")
+                .build()) {
+            @Override
+            public LandedCostInfoForAsin call() throws Exception {
+                rateLimiter.acquire();
+                return client.newComputeBestLandedCostRequest(DateTime.now().toDate(), buyableItem, ONE_UNIT).call();
+            }
+        };
+    }
+    Override one method in niming object
+
+
+
+2017-02-16
+postmortem: an analysis or discussion of an event held soon after it has occurred, especially in order to determine why it was a failure: an election postmortem on why the party lost.
+
+Using the apollo environment instead of cloud desktop to run the server to solve the AAA issue: /apollo/bin/env -e FABToolsWebsite brazil-build test-integration-assert
+
+M2: Merchant marketplace
+IAP: Iventory availability proxy
+
+
+2017-02-16
+1 on 1 to talk about: Projects and career
+
+Projects: Vendor confidence Service
+IRI, they have primitives and FABCommon staff
+On call: diff on call since working on diff things
+
+Career: goals
+
+When the business team want some new features, if it is very small, we can take a look and put into our story board; If it is complex, we need have BRD reviews and tell them what complexity each part is and how much time it will take, then we will decide what part are we going to do.
+
+
+
+2017-02-20
+
+Logs run on cloud desktop is at FABToolsWebsite/src/FABToolsWebsiteContent/build/private/var/output/logs 
+Logs on host is at /apollo/env/var/output/logs
+
+
+10:20:16	DELETE FROM fabric.fulfillment_centers where fulfillment_center_external_id='IND1'	Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`fabric`.`fc_programs`, CONSTRAINT `fk_fc_program_fulfillment_centers1` FOREIGN KEY (`fulfillment_center_id`) REFERENCES `fulfillment_centers` (`fulfillment_center_id`) ON DELETE NO ACTION ON )	0.033 sec
+
+As is, you must delete the row out of the advertisers table before you can delete the row in the jobs table that references it.
+
+FC Expansion Tools: 
+Devo:
+MarketPlaceID: ATVPDKIKX0DER
+IOG: 1356
+Merchant ID: AKCWMF8QQWO37
+RTIP publish as Merchants: fresh_lax_delivery
+
+Prod:
+ATVPDKIKX0DER
+ONT4
+376
+A3LFS65WBSM0SX
+
+Tcpdump is a great tool when a problem is reproducible. It requires no changes to your software. Just run the command and watch the logs.
+
+Error codes: luan ma
+
+I keep getting “Caused by: com.amazon.aaa.securitydaemon.exception.AccessDeniedException: Security policy violation detected for response from FreshWombatService.GetAvailabilityForPlanning: The security policy requires a signed response, but there was no X-Amzn-Authorization header.” error when I try to create a new FC for test in beta environment on my cloud desktop. 
+It finally turn out it's wombat team's problem.
+
+So AAA issue: Look at the logs, then possible solutions are Sync from beta, detactive AAA, reactive AAA, or using Apollo environment instead. It also may because other teams' problem.
+
+
+
+Brown bag: Ant and happyTrail, happierTrial
+
+
+2017-02-21
+git diff-tree --no-commit-id --name-only -r bd61ad98  ---> List all files in a commit
+The --no-commit-id suppresses the commit ID output.
+The --pretty argument specifies an empty format string to avoid the cruft at the beginning.
+The --name-only argument shows only the file names that were affected (Thanks Hank).
+The -r argument is to recurse into sub-trees
+
+1. Command to read cloud files in explorer:
+1. type: python3.4 -m http.server
+2. open port 8000 in explorer
+
+2. Automatically build by dependency:
+https://w.amazon.com/index.php/BrazilBuildSystem/Tools/BrazilRecursiveCmd 
+
+
+
+
+In FabFcExpansionCOntroller.java L325: 
+        fabFCExpansionToolValidator.validate(updateFcForm, result, FCExpansionInputKey.DEMAND_FORECAST_MODEL);
+        if (result.hasErrors()) {
+            return getConfigUpdateResponseIfErrorsExist(result.getFieldErrors());
+        }
+
+
+
+In FFETV.java Line 68:
+            case DEMAND_FORECAST_MODEL:
+                if(isInvalidDemandForecastModel(updateFcForm.getUpdateDemandModel())) {
+                    errors.rejectValue(FCExpansionInputKey.DEMAND_FORECAST_MODEL.getUpdateFcFormField(),
+                            prependModelAttribute("updateFcForm", "updateDemandForecastModel.invalid"),
+                            "Demand forecast model is invalid. Should be nonempty.");
+                }
+
+
+2017-02-22
+Tests are running in multiple threads, so when they have some shared state, it's easy to failed.
+Which .cfg file contains domain/realm config?
+
+When the brazil-build, it copy files to build folder and then look at it to serve.
+
+Bug: Forecast model type should have warning imediately after click "add new FC"
+
+I write these steps up in case you need it (acknowledgment to Shrikant, Phil, Zev):
+ 
+1. Import the Bifrost package into IntelliJ (It’s better to just have that single package in the workspace)
+2. Mark “build->generated-src” as generated src
+3. Mark “build->private->classes->generated->com” as generated src
+4. Change AppConfig.initialize to be “RscBifrostService”
+5. Add yourself to this odin material:
+https://access.amazon.com/aws/accounts/show_user?account=regional-supply-chain&user=RscBifrost
+ 
+ 
+---Following steps are the same---
+ 
+6.Right click on the File name tab in the editor and select "Create 'ManualRecovery...main()'..." 
+Enter the domain of the failure into Program Arguments. Use USAmazon, EUAmazon or JPAmazon 
+7: Set up a configuration per Realm so you don't have to change the Program Arguments to run in a different realm. 
+8: Change the Working Directory value to "$MODULE_DIR$" 
+9: Run the created configuration. 
+
+
+Alternative using the AWS CLI:
+
+env AWS_ACCESS_KEY_ID=(odin-get -t Principal com.amazon.access.regional-supply-chain-RscBifrost-1) AWS_SECRET_ACCESS_KEY=(odin-get -t Credential com.amazon.access.regional-supply-chain-RscBifrost-1) aws swf respond-activity-task-completed --region '<region>' --task-token '<task-token>' --result '"<result>"'
+
+Note, the triple-quotes around the result are crucial, since otherwise the activity will try to parse the result as a JSON literal, instead of as a string.
+
+
+2017-02-23
+To encyt a ID:
+    @Test
+    public void obfuscateId() {
+        System.out.println(AmzUid.encryptSequenceID(1, "A"));
+    }
+
+
+FreshWombatServiceProxyIntegrationTest
+FreshWombatServiceProxyIntegrationTest
+PermissionsUtilIntegrationTest
+
+Prefer newArrayList to 
+
+There is no need to catch RuntimeException.
+
+# Reviews just the latest commit
+% cr --parent HEAD^
+# Updates a review with this range of commits
+% cr -r CR-21354 --range efb4b3e:d6a7800
+# Reviews specific commit ranges for two packages
+% cr --include "MyService[7f07509:a261b4a],MyServiceModel[HEAD^]"
+
+18:19:50	delete FROM fabric.fulfillment_centers where fulfillment_center_external_id='IND1'	Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`fabric`.`region_adjustments`, CONSTRAINT `fk_regionadjustment_fcid` FOREIGN KEY (`fulfillment_center_id`) REFERENCES `fulfillment_centers` (`fulfillment_center_id`) ON DELETE NO ACTION ON UPD)	0.012 sec
+18:20:46	delete FROM fabric.fulfillment_centers where fulfillment_center_external_id='IND1'	Error Code: 1451. Cannot delete or update a parent row: a foreign key constraint fails (`fabric`.`fc_rounding_rules`, CONSTRAINT `fk_rounding_rules_fulfillment_centers_id` FOREIGN KEY (`fulfillment_center_id`) REFERENCES `fulfillment_centers` (`fulfillment_center_id`) ON DELETE N)	0.011 sec
+
+2017-02-27
+1. Exception is also a class. 
+eg:  package com.amazon.fresh.fab.fabric.exceptions;
+   				  
+public class InvalidRealmForCountryCodeException extends RuntimeException {
+
+ public InvalidRealmForCountryCodeException(String message) {
+     super(message);
+ }
+
+ public InvalidRealmForCountryCodeException(String message, Throwable ex) {
+     super(message, ex);
+ }
+}
+
+2. Wombat Academy
+1) Amazon: 
+AmazonFresh:
+
+2) Wombat: Fresh, PrimeNow, Como, Campus, Tresure truck, Go --> Same as FAB since all these programs are regional
+FFP: planning of fulliment
+
+
+Amzon.com:
+ASIN --> FnSKU(Used in fulliment center) Third party items can have same FnSku with diff asin
+Fulfillment(shipping what we have to customer) --> procurement(Getting what we don't have)
+Transship --> ship btw amazon warehouse
+Purchase Order --> Buying externally to amazon network
+ASIN transformations: Case of banana(Source parent case asin) --> banana(sellable, child, each)
+MarketPlace: Everywhere amazon customer shops. eg: Amazon.com, amazon.co.uk, prime now app, audible
+Merchant: Amazon, fresh retail, fresh syndicated?
+Fulfillment center: Amazon warehouse. eg: SEA8, EWR6
+Inventory owner goup(IOG): Distinguish who own the inventory. Eg: 1 Amazon; 376 fresh 
+Inventory avalibility pool(IAP): MM --> IAP --> IOGL
+						(website)MM -->     --> IOGL (fulfillment)(Multiple to multiple)
+Region: a set of zip code
+
+Ambient(regular temp);Chilled;Frozen
+
+Offers:(Per marketplace, merchant, asin, msku(merchant granulity)) eg: Fresh sell items on Amazon.com
+		1. Item info(detail page)
+		2. pricing
+		3. Availibility(wombat)
+Fresh:
+Schedule delivery: 
+Customer expectation: pick items, pick time slot + address, order, delivered
+Fulfillment: 
+
+Timing concept: 
+Shrink --> Expiration - "time to enjoy"(pad time to each item)
+Critical pull time(CPT): When the trucks need to leave the fc to finish the order on the slot
+Subs start: start to look at substitute
+
+Fresh item:
+1. Fresh retail: 
+2. Syndicated:(.com items) .com FC --> fresh FC --> customer
+3. 3P/ FMP items: local merchant --> Fresh FC  --> customer
+
+Fresh Org:
+	Dev teams:
+	TPM:
+	QA:
+	UX/Design:
+	Business(Perishable, produce, deli/prepared, center store)
+	ISM
+	VM(Vendor manager)
+	Marketing
+	Product management
+	Finicial/Accounting
+	SE
+	CS
+
+Wombat: 
+Supply - Demand = Availability
+1. Supplies: Warehouse + incoming supply
+	Warehouse{
+		Locations: prime(ready to pick now), reserved(Now + 30 minutes), special(Now + 24 hours lead time)
+		These three locations can change btw each other
+
+		Every FC has a warehouse management system. 
+		1) AFT(.com, fresh) 
+		2) AFT-lite(PrimeNow, Como, Campus)(faster process)
+		3) EFP(treasure truck)
+
+		IAC(Inventory availability change) message(per Fc/FnSKU): 
+		Types: receive, move(move btw locations), adjust(eg:case change, shrink out), bind(specific item to a order), ship(leave the fc), sync(general update the inventory picture)
+
+		FC, FnSku; 
+		Inventory snapshot: Inventory level by location(ILBL); Inventory level by owner; Inventory level by shrink;
+		Receive, bind and ship has metadata. 
+		Metadata: Receive has PO and Tship; Bind has customer, Tship, order
+	}
+	incoming{
+		We need to guess when would they become prime.
+		Purchase orders(What we ordered externally): Track vendor performance. Trust overrides(ISM rating);
+							PO service 3 states: submitted; confirmmed; completed;
+							LVSD: when PO arrive at FC
+		transshipments: Use cases: 1. Sydicated items(.com -> fresh) 2. Fresh items(Fresh fc -> fresh Fc) 
+						We trust more transshipment since in intern Amazon network. But we can black list some
+						Updates: 1. within IAC message(receive, bind, ship) 2. AFT tranship stream(cancel, delay)
+						NTSBD(need to ship by day), EXB(Expected time to Bin)
+		plannedPO(PPO): From FAB; only show very trusted vendors(evergreen); ISM can override; only show 					up to 1 month
+	}
+
+2. Demands	
+	Customer order demand, transshipment demand
+	Three phase that demand can go through: promised, bound, shipped
+	Promised: reservations(customer checkout, TTL 8 hours), encumbrances(planning, permanent)
+	bound: Pick as demand, specific items tied to demand
+	Shipped: When items leave the FC to fulfillment the demand
+
+	Available time     ---Supply window----    Shrink time
+	Required Available time(RAT)  ----Demand window----Earlest shrink time(EST)
+	The demand window should be in the supply window if the supply want to fulfillment the demand
+
+	Demand is from API.
+
+Wombat API:
+	GetAvailabilityForPlanning(Read only)
+	ValidateReservations(Tell you whether the items are available)
+	SetReservations(Write API, expire 8 hours)
+	SetEncumbrances(Write API, permanent)
+	SetTransshipmentEncumbrances(Write API)
+	SetSydicatedItemsEncumbrancesAndTransshipSupply()
+	SetFmpEncumbrancesAndPoAvailability(put demand directly without checking supply)
+	CancelOrder()
+
+Clients using these APIs:
+FAB --> GetAvailabilityForPlanning()
+FFP(Fast fulfillment planning) --> GetAvailabilityForPlanning()
+FFP turn reservations to encumbrances when they are sure to have these order
+CASE -- wombatCasePlugin --> SetReservations()
+CASE -- ValidateReservations() 
+TEX(Transfer extension service) --> SetTransshipmentEncumbrances()
+FMP --> SetSydicatedItemEncumbrancesAndTransshipSupply()
+FMIPS --> SetFmpEncumbrancesAndPoAvailability() Order local vendor from FMP
+CAMUS(Common availability model unified service) --> combine GPI(SCOT service) and Wombat together
+
+Public scope: 							reactor(RSX) (regional selection experience) --> FMS --> availibility
+										|
+private scope --> precomputer --> public scope --> Bantha --> Amazon.com
+										|
+										campus
+
+private scope(Complex data about availability) and public scope(Simple data about availability) are both sable, but they have different data format.
+
+
+
+Fresh Offer: Item info, availability, price
+
+Bantha use Wombat inventory information and extends it with schedule and track information.
+
+Wombat Tech Stack:
+Tier1: Sable(K, V)  
+1. availability info(ion -> json)
+2. customer orders
+
+Tier2: DynamoDB:
+1. Vendor confidence settings
+2. Transship confidence settings
+
+Tier 1: Critical for customers:  API
+Tier 2: Not critical customers:  Message processing
+
+RDS(relational database service): 
+1. Po
+2. PoItem 
+Vendor performance
+
+SNS/SQS: 
+SNS topics
+SQS queue
+
+Precompute: 
+Java
+Coral(API service freamwork)
+Spring(Dependency Injection)
+Moniter, Alarm --> Benderlibs!!!!
+
+Dependencies:
+MM-IAP-IOGL
+APMS: IOGLs -- IAPs
+PIMS: MMs + FnSku-- IAPs
+TDS(Transformation and definition service): source asin -- sellable asin, yields(How many child asins does the parent can transform to), transformation lead time.
+RCID: Retail catalog item data(Shelf life(expiration), shelf life pad time), item attributions(can be used to get different pad time)
+		Shelf life - shelf pad = shrink
+RMAPS/RMETS: Regional mapping service, regional metadata service
+
+Clients(Programs) --> FCs
+program --> RMAPS --> regions --> RMETS --> FC
+
+RIPS: consolidate PO(CPO) breakdown
+
+
+AFT/AFT Lite/EFP --> IAC --> SNS/SQS(All fcs) --> IAC filter --> SNS/SQS(wombat fcs)
+
+AFT-transship --> Tship --> Tship filter
+
+FAB --> PoService --> PO --> PO filter
+
+FAB --> PPO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Njord design review:
+A child asin may have different parent asin
+Vendor asin quantity per case may effect order(VCS)
+Landed cost, vendor cost: some vendor ship theirselves, some of them let us pickup, some of them have contract with us.
+
+Some tool that let using sql to query DynamoDB
+EDX+ --> the new datawarehouse
+Nexus
+
+cache staff so that we don't call other service too often
+
+Blacklist 1% ? Distributed hash table
+
+DTO: Data transfer object
+
+DDD: Domain-driven design
+
+
+2017-02-28
+When our dependency is down, tell the oncall person don't be surprised.
+
+LSE --> Large scale events
+
+Gamma use prod environment
+
+tt: click action to promote a thread to summary, so that the tt watchers don't need to go through all of the tickets to know what's going on.
+
+ISE3 can be used on gamma testing
+
+We can find FCs that exist on Prod but not in Gamma, which we can use to test on Gamma.
+
+Add a column: ALTER TABLE table_name
+			  ADD column_name datatype
+Add a row: INSERT INTO table_name (column1,column2,column3,...)
+		   VALUES (value1,value2,value3,...);
+
+Relate the cr and sim to the CM under related items.
+
+
+Static method block --> method that will executed in compiling time
+
+
+2017-03-01
+Whether can we by pass the intergration test failure depends on what tests fail and when could we fix that test.
+
+In Fc Expansion page, we cache the page for 20 minutes(TTL). After that, the cache get cleared and next time when we sent a new request, it will refresh.
+
+
+When asking questions or talk with people, say what u are doing first, so they could understand what u are trying to do and not confusing.
+
+horizoton --> vertical story?
+
+Change program name and other to make it consistent
+"Override integration test" --> message to override pipeline
+
+less "log name" and then "shift + f" to see the ongoing logs, and then "ctrl + c" to scroll up and down
+
+2017-03-02
+When there is @Component, we can use auto-componentscan to autowire; If there is no component for it, we need to write it in spring's config*.xml
+
+
+Talk about useful tools frequently used.
+GIM is the UI tool for internal Amazon users to create new ASINs. The idea is that our business team will use it if we need to sell a brand new ASIN that doesn't exist yet.
+
+Change some thing, need to make sure that will not break other things. Eg: change the RTIP published merchant to empty, we need to make sure that FAB will not get trouble.
+
+All hands:
+aTrex --> FFX
+GL: Add fresh cart on .com retail page, things are easy to out of stock since fresh is regional
+Latency
+
+Always thinking automating staff
+
+
+2017-03-03
+One on One:
+Priority: PrimeNow TPM ask to enable their FC as soon as possible sicne they are waiting to place more PO. But our pipeline is doing other things. How to do?
+
+GPT award: How does it work?
+
+How rally changes?
+
+
+Wrap this with an RscMetricsWrapper
+
+try (RscMetricsWrapper metricsWrapper = ...) {
+  Stopwatch stopwatch;
+  The method or code block you want to record
+  metricsWrapper.addTime("TimeToGetFuture", stopwatch.stop().elapsed(TimeUnit.MILLISECONDS), SI.MILLI(SI.SECOND));
+  ...
+  metricsWrapper.addCount("ResponseAsins", itemInfoMap.size(), Unit.ONE);
+  return ...;
+}
+
+Static {
+	
+}
+
+//nom-static block
+{
+	
+}
+
+
+In Multi-threading, instead of using static, we need to create more instance to do things.
+
+Before makeing an expensive call, we usually check map or cache that whether we already have that value.
+
+the keyword "this" is only needed to disambiguate instance variable from local variables that have the same name in constructors and setters.
+
+
+private Future<List<Map<String, List<String>>>> searchResultFutures;
+private Multimap<Asin, VendorCode> asinVendorCodeMap;
+private FabricServiceReporter fabricServiceReporter;
+private Table<Asin, VendorCode, Currency> costsTable;
+
+This is introducing state in a class that is used by multiple threads.  This is not thread safe and you can't do this.
+
+Mutlithreading programming 
+
+private constructor for utility class, also make the class as final
+
+Try best to make a class non-state, so that we won't get trouble in multi-threading
+
+
+How to test?
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

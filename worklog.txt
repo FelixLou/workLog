@@ -1424,7 +1424,7 @@ PermissionsUtilIntegrationTest
 
 Prefer newArrayList to 
 
-There is no need to catch RuntimeException.
+There is no needc catch RuntimeException.
 
 # Reviews just the latest commit
 % cr --parent HEAD^
@@ -2333,7 +2333,7 @@ scp -v localfile remotefile
 
 hostname: dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com
 
-Command to upload file to host: scp ~/Downloads/result lujiabin@dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com:/tmp/salesInfoResult
+Command to upload file to host: scp ~/Downloads/results lujiabin@dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com:/tmp/salesInfoResult
 Command to download file to local: scp lujiabin@dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com:/tmp/salesInfoToUpload/salesInfo ~/Downloads/salesInfo
 
 IntelliJ student code: CGY3VQ9AYC
@@ -2431,6 +2431,564 @@ Problem: Don't have permission to write log file in devo host, while DJS have th
 		File path is not correct
 
 scp -o ProxyCommand=none /tmp/salesInfoResult lujiabin@tethys-devo-2a-5441540b.us-west-2.amazon.com:/tmp/salesInfoResult
+
+scp /tmp/salesInfoResult lujiabin@tethys-gamma-na-1a-69b253a4.us-east-1.amazon.com:/tmp/salesInfoResult
+
+scp /tmp/salesInfoResult lujiabin@tethys-gamma-na-1a-b6b04960.us-east-1.amazon.com:/tmp/salesInfoResult
+
+
+scp /tmp/salesInfoResult lujiabin@tethys-prod-na-1d-f647735e.us-east-1.amazon.com:/tmp/salesInfoResult
+
+scp /tmp/salesInfoResult lujiabin@tethys-prod-na-1e-ec02e35e.us-east-1.amazon.com:/tmp/salesInfoResult
+
+
+scp ~/Downloads/results lujiabin@dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com:/tmp/salesInfoResult
+
+
+You can add permission on permission.amazon.com a sudo access, so that you can sudo run as user XXX
+
+linux command: id to show which group are u in
+
+
+TODO: Quilt, alarm on SEDI
+
+END-to-End test: S3 count bug, S3 cannot send SQS message
+DJS ramdomly choose a host to run, so remember to upload file to all of them
+
+alarm remove but not delivered
+
+2017-04-12
+Questions to ask SEDI: 
+Same name file only transfer once
+
+You can not mock the tested class, you mock it's dependency
+
+Mock this instead of instantiate using NullMetricsFactory. This way you will need to change your tests to check if the appMetrics were called or not and you will be safer in the future if something change.
+
+
+2017-04-13
+Setup a FTP server for testing
+Autowire and new
+
+If we calling our own method, we don't need to consider it will return null if we know that it will not.
+
+
+DJS monitoring
+
+We can put credential user name and password in odin pair. So people with permission can use odin-pair to get them.
+
+TODO: write a script to check whether the ftp server has specific file.
+
+Timber
+Certicate Anvil for Tethys
+
+2017-04-14
+Where at all possible, we recommend avoiding the use of Time Windows. Ideally, changes should be able to move through your pipeline as quickly as possible. Tools like Bounce Deployments and Automatic Rollback can make Prod deployments safe at any time.
+
+
+
+mail [-s subject] [-c cc-addr] [-b bcc-addr] to-addr
+
+Have a priority queue of things I want to learn
+
+The simplest way to start a background process is to add an ampersand (&) at the end of the command.
+
+ps -f --> show full infomation of processes
+
+Each user process in the system has a parent process.
+
+Most of the commands that you run have the shell as their parent.
+
+LSE learning:
+
+
+2017-04-17
+
+P1: Configuration, Sev2.5, Onboarding with Quilt
+
+Host unhealthy: Try to reboot, if that failed, replace the host
+
+Limited Launch: When we launch the technical part but the whole project should be launch by business team afterwards.
+
+Order salad!
+
+Update Desgin doc for Tethys.
+
+pretending writing.
+
+To find a process that using a port by java: netstat -plten |grep java
+
+pkill -u <user>: kill a specific user
+
+userID 99 is nobody
+userID 0 is root
+
+Water = Workflow Automated Ticket Event Responder
+
+2017-04-18
+Check whether metrics is right
+
+Whwen you do mock for a static method, expectation, it will mock every method for this class. So if there are many static methods  in this class, we'd better use "new Mockup";
+Don't mock Math!
+
+Java.time is the better than Joda Time and of course java.util.time 
+
+Static method is also need to be mocked
+
+2017-04-19
+I'd summarize it saying a method with @bean returns a customizable instance of spring bean, while @component defines a class that may be later instanciated by spring IoC engine when needed.
+
+@Component (and @Service and @Repository) are used to auto-detect and auto-configure beans using classpath scanning. There's an implicit one-to-one mapping between the annotated class and the bean (i.e. one bean per class). Control of wiring is quite limited with this approach, since it's purely declarative.
+
+@Bean is used to explicitly declare a single bean, rather than letting Spring do it automatically as above. It decouples the declaration of the bean from the class definition, and lets you create and configure beans exactly how you choose.
+
+	
+use '@component' for service based classes, '@Bean' as factory more tailor made objects, e.g jdbc datasource
+
+Lifecycle Callbacks
+
+Use dumpConfig() to print the brazil config tree System.out.println(AppConfig.dumpConfig());
+
+Apollo cmmmands: During a deployment, Command Scripts are run based on the numeric order of the first three digits, or ASCII sort order if there is a tie. The *Admin directory commands are run before the non-admin directory commands. For example, all of the PreactivateAdmin/* scripts are run before the Preactivate/* ones. If a Command Script fails none of the subsequent scripts will be run.
+The *Admin scripts (ActivateAdmin, DeactivateAdmin, FleetActivateAdmin, PreactivateAdmin, TerminateAdmin) are executed as root while the phase scripts (Activate, Deactivate, FleetActivate, Preactivate, Terminate) are executed as the configured run-as-user defined on the Apollo environment.
+
+brazil-config: globel, site, appgroup, app, container, machine, user, override, environment, command line
+
+brazil-config can not only be string but also list, map
+
+pad time is extra time like a pad
+
+Version set – A Brazil construct for a set of specific versions of specific packages. For more information, see Version Sets.
+
+Version filter – An Apollo construct, similar to a Version Set. The best practice way to select appropriate package versions when performing deployments.
+
+Root Cause Resolution is one of the best ways to stop issues from draining your team’s resources. 
+
+However, you don't need to hit 100% in order to be doing well. Typically somewhere around 75-80% is good enough in terms of the amount of investment you need to make in coverage. Beyond that it gets more expensive to test and the returns diminish. 
+
+When you receive a remedy ticket that will require a lot of effort, convert it to a feature and include it in the product backlog to be prioritized appropriately. By doing this, the oncall can continue to resolve many small & medium issues while that one large issue waits for resources. This approach also has the benefit of putting the large ticket through the planning poker process where your team can discuss how best to resolve it instead of just getting assigned to whomever is unlucky enough to be oncall when it is discovered.
+
+Use profile() to select a component
+
+By default beans marked with ‘@Component’ will have the same name as the class. 
+
+@Autowired and @Inject
+Matches by Type
+Restricts by Qualifiers
+Matches by Name
+
+@Resource
+Matches by Name
+Matches by Type
+Restricts by Qualifiers (ignored if match is found by name)
+
+2017-04-20
+You will forget the code you wrote in 6 month
+
+Click the index of a row will give you the anchor of the row in the url
+
+terse: short and simple
+
+Here's a quick recipe on how to checkout a CR to your machine.
+ git remote add cr_lujiabin ssh://git.amazon.com/pkg/PaymentPlanCore/cr/lujiabin 
+ git fetch cr_lujiabin
+ git checkout cr_lujiabin/cr3804545
+ https://w.amazon.com/index.php/InternationalCountryExpansion/Sao_Paulo_Dev_Center/Tech_Tips#How_to_checkout_a_CR_revision_into_your_workspace
+
+
+Share code in snapshot with your co-worker:
+https://code.amazon.com/snapshots/lujiabin You can have the new code in the code review without have a shared branch
+
+Sometimes you want to grab code from another developer's desktop. Perhaps you actually want to see the code running, or open it up in your favorite editor.
+[edit][hide] In git
+git remote add joriley ssh://joriley.desktop.amazon.com/workplace/quesadilla-git/repo/QuesadillaWebsite.git
+git fetch joriley
+git checkout -b my-new-branch-name joriley/source-branch-name
+Start_hand.png	Note: this requires that you have a home directory setup on the developer's machine, and that when you log in, your path includes the git packages
+
+Encrypting/Decrypting customer IDs:
+/apollo/env/envImprovement/bin/decrypt.rb A3DKJPJT515C28 
+/apollo/env/envImprovement/bin/encrypt.rb 21859143115
+
+TODO: Shadow SDE2 to interview
+
+Fidelity: faithful to a person or belief
+
+TOASK: 
+How do you know that parsing should be case insensitive
+Metrics
+
+Remember to pull the latest code before start to work on it
+
+2017-04-21
+Be familiar with the principle and use it to defense your opinion
+
+Njord: Vendors will send the changed price via Vendor Central instead and Njord will compile that and put in a database that Vendor Managers can query.
+
+Git pull to get the latest code before you start work so that you have less conflicts to merge.
+
+Vendor central is a website where vendors can upload cost.
+Vendor master is a service that we can query business group.
+
+ItemEntity is sellable asin, source asin and fcId.
+
+coverage.exclude.instrument.pattern
+
+Where does the ht:import import from?
+
+jacoco?
+
+Documentation for the code
+
+2017-04-23
+Use profile to optimize your code
+
+if you are encrypting your data as well, you should compress before encrypting. Generally speaking, encrypted data does not compress very well as it has high entropy.
+
+If data does need to be transferred across regions, do this transfer once rather than on every request. Mechanisms such as DynamoDB streams or S3 object notifications can be utilized to do this easily in an asynchronous manner. Alternately, technologies such as CloudFront can also be utilized to transfer data closer to its location of use.
+
+Don't pass around a lot of data
+Instead of passing around lots of data, utilize shared files to share information. For example, instead of providing a paginated API for getting all orders for a user, generate an object on S3 and return a link. By setting the permissions on the S3 object correctly, it is still just as secure but allows the client to consume the data as they choose and reduces the back-and-forth overhead. Object lifecycle can also be set to automatically delete these objects after some time has elapsed.
+
+Question: Why searching asin in fabreporting.reorder table is so slow?
+
+2017-04-24
+When you have no clue and lack of information, ask tt requester to provide more info.
+
+Question to ask: why prod in us-west?
+
+Need to give the hostclass approciate odin to let them run the application.
+
+TodWorker/regionalTodworker
+
+af-rsc-tethys-notify
+
+Our service's SLA is for us, our dependency service don't know it, so when our dependency failed and don't have a way to recovery it in our SLA, we need to cut ourselves ticket and then cut them ticket manually so that we can set up the level ourselves.
+
+clean some cache: sudo /apollo/env/SDETools/bin/pkg-cache-cleanup --days 1   
+
+Metrics: 
+Time --> dependency service time including database
+Exception --> every caughted exception
+Count: every number we care about
+
+Metrics is what you care about, it depends on your system
+
+brazil-recursive-cmd brazil-build
+
+
+register-with-aaa
+
+2017-04-26
+The wire logger lets you capture the request and reply each message a service processes. Capturing this information allows you to reproduce error, debug problems, or even replay messages.
+
+Change run as uer after deployment is complex, you need to delete all the env, especially aaa staff to have a successful deployment. Following this wiki: https://w.amazon.com/index.php/Apollo/FAQ/Run_as_user
+
+run as user is the user who Apollo uses when running the ApolloCommands (Preactivate/Activate/Deactivate) deployed with your environment. If you are creating files and directories they will be owned by this user. If you are starting a process it will be owned by this user.
+
+@Mocked与@Injectable的区别：前者针对类型，后者针对单个实例。整个测试类中被mock的类型的所有实例都将被mocked，被mocked的类所有非private方法都将处于mocked状态,被mocked的方法默认返回值null. 被@Injectable注解的单个实例在整个测试类中将处于mocked状态
+
+When using @Injectable, static methods and constructors are also excluded from being mocked. After all, a static method is not associated with any instance of the class, while a constructor is only associated with a newly created (and therefore different) instance.
+
+sns and datebase operation is very quick, we need to monitor them using nano seconds.
+
+2017-04-27
+@Tested: Make a to tested class not null
+
+@Injectable  
+
+Show me profiler?
+
+DynamoDB monitor and alarm? Serval alarms going on
+
+ctrl + d: quit Tmux
+
+2017-04-28
+Amazon Resource Name (ARN)	
+
+Read and write capacity
+
+denormalized means not-relational, not duplicate
+
+The partition key of an item is also known as its hash attribute. The term hash attribute derives from DynamoDB's usage of an internal hash function to evenly distribute data items across partitions, based on their partition key values.
+The sort key of an item is also known as its range attribute. The term range attribute derives from the way DynamoDB stores items with the same partition key physically close together, in sorted order by the sort key value.
+Each primary key attribute must be a scalar (meaning that it can only hold a single value). The only data types allowed for primary key attributes are string, number, or binary. There are no such restrictions for other, non-key attributes.
+
+.com, smaller team, stable logic
+
+TOLEARN: How to say things politely
+
+DynamoDB supports eventually consistent and strongly consistent reads.
+
+Eventually Consistent Reads
+
+When you read data from a DynamoDB table, the response might not reflect the results of a recently completed write operation. The response might include some stale data. If you repeat your read request after a short time, the response should return the latest data.
+
+Strongly Consistent Reads
+
+When you request a strongly consistent read, DynamoDB returns a response with the most up-to-date data, reflecting the updates from all prior write operations that were successful. A strongly consistent read might not be available in the case of a network delay or outage.
+
+Note
+DynamoDB uses eventually consistent reads, unless you specify otherwise. Read operations (such as GetItem, Query, and Scan) provide a ConsistentRead parameter: If you set this parameter to true, DynamoDB will use strongly consistent reads during the operation.
+
+http://stackoverflow.com/questions/685522/using-private-static-methods
+
+A private static method by itself does not violate OOP per se, but when you have a lot of these methods on a class that don't need (and cannot*) access instance fields, you are not programming in an OO way, because "object" implies state + operations on that state defined together. Why are you putting these methods on that class, if they don't need any state?
+
+Ask Alex: how do you find the bug
+
+2017-04-29
+Why HUK1 HUK2(EU) doesn't succeed and failed.
+
+output already generated, so use the old file to parse. But why LCY1 succeed?
+
+stale: old, past  <-> Fresh
+
+If the issue has been mitigated, have you resolved the Sev 2 ticket?  If you have mitigated the issue and  you leave the ticket in Pending it will silently De-Dupe into the existing ticket causing you to miss a future issue.
+
+Has the root cause been identified?  If the root cause has been identified and requires a code change, create a Sev 3 ticket and relate it to the Sev 2 ticket.  If the root cause has not been identified, create a Sev 3 ticket and relate it to the Sev 2 ticket to document the research for the root cause.
+
+VGA to MAC Port
+
+2017-05-01
+Using the output.json file to submit manual PO.
+There is no way to rerun a single FC, we can only wait for the process to fail and do manual recovery through manual recovery console.
+
+If the SWF doen't run, kickoff one from: https://coral.amazon.com/FreshAutomatedBuyingService/NA/OneBox/Prod/explorer
+
+Set the enableCronControlledWorkflows to false to make it start at once.
+
+nag: 唠叨
+
+
+Go to AV support office
+2017-05-02
+the treatment group VS the control group
+
+
+2017-05-03
+Redshift has way better performance in batch insert and query, so it's very fit for reporting.
+Fresh want to separate storage and querying, so we plan to use EDX for storage and ElasticSearch to query.
+
+Command + o to open a selected file
+
+Space to page down and shift + space to page up
+
+DynamoDB A single partition can hold approximately 10 GB of data, and can support a maximum of 4,000 read capacity units or 1,000 write capacity units.
+
+Every upload in this sequence uses a different partition key value, keeping more DynamoDB servers busy simultaneously and improving your throughput performance.
+
+You can save on resources by storing "hot" items in one table with higher throughput settings, and "cold" items in another table with lower throughput settings. You can remove old items by simply deleting the tables. You can optionally backup these tables to other storage options such as Amazon Simple Storage Service (Amazon S3). Deleting an entire table is significantly more efficient than removing items one-by-one, which essentially doubles the write throughput as you do as many delete operations as put operations.
+
+One solution would be to cache these reads at the application layer. Caching is a technique that is used in many high-throughput applications, offloading read activity on hot items to the cache rather than to the database. Your application can cache the most popular items in memory, or use a product such as ElastiCache to do the same.
+
+If it isn't possible for you to generate a large amount of test data, you can create a table that has very high provisioned throughput settings. This will create a table with many partitions; you can then use UpdateTable to reduce the settings, but keep the same ratio of storage to throughput that you determined for running the application at scale. You now have a table that has the throughput-per-partition ratio that you expect after it grows to scale. Test your application against this table using a realistic workload.
+
+Tables that store time series data can grow in an unbounded manner, and can cause slower application performance over time. With time series data, applications typically read and write the most recent items in the table more frequently than older items. If you can remove older time series data from your real-time table, and archive that data elsewhere, you can maintain a high ratio of throughput per partition.
+
+2017-05-04
+DynamoDB: The cost of updating a single attribute of an item is based on the full size of the item. 
+
+A Scan operation always scans the entire table or secondary index, then filters out values to provide the desired result, essentially adding the extra step of removing data from the result set. Avoid using a Scan operation on a large table or index with a filter that removes many results, if possible. Also, as a table or index grows, the Scan operation slows. The Scan operation examines every item for the requested values, and can use up the provisioned throughput for a large table or index in a single operation. For faster response times, design your tables and indexes so that your applications can use Query instead of Scan. (For tables, you can also consider using the GetItem and BatchGetItem APIs.).
+
+Don't create local secondary indexes on attributes that you won't often query. Creating and maintaining multiple indexes makes sense for tables that are updated infrequently and are queried using many different criteria. Unused indexes, however, contribute to increased storage and I/O costs, and they do nothing for application performance.
+
+Avoid indexing tables, such as those used in data capture applications, that experience heavy write activity. The cost of I/O operations required to maintain the indexes can be significant. If you need to index the data in such a table, copy the data to another table with any necessary indexes, and query it there.
+
+Because local secondary indexes consume storage and provisioned throughput, you should keep the size of the index as small as possible. Additionally, the smaller the index, the greater the performance advantage compared to querying the full table. If your queries usually return only a small subset of attributes and the total size of those attributes is much smaller than the whole item, project only the attributes that you will regularly request.
+
+When others do a good job or finish something, send a message to say "it's a good job" or "congras".
+
+
+2017-05-05
+This is for Vendor confidence Project production stage of Fresh RSC team. We plan to use DynamoDB, and potentially S3, SQS.
+
+Create AWS account, you need a new email-list for that account and after submitted, you could contact an approver to accerlate the approving process.
+
+
+alias/login: 
+mareenp
+mareenp@amazon.com
+
+thakas 
+lrrosada
+rabellog
+yujingh
+ruiwen
+wenyuanj
+lujiabin
+
+thakas@amazon.com
+lrrosada@amazon.com
+rabellog@amazon.com
+yujingh@amazon.com
+ruiwen@amazon.com
+wenyuanj@amazon.com
+lujiabin@amazon.com
+
+arjonat
+zffriedm
+ruizand
+jagilber
+mahongyi
+wantiany
+
+arjonat@amazon.com
+zffriedm@amazon.com
+ruizand@amazon.com
+jagilber@amazon.com
+mahongyi@amazon.com
+wantiany@amazon.com
+
+
+
+2017-05-08
+Remittance: a sum of money sent
+
+create POSIX system account for FreshFreyja --> freyja
+
+Run As User for the Vendor confidence service for Amazon Fresh - 
+
+SEV2: When there are more than expected connections to the database than we expected, the connections may be failed. For example, when FAB is running, there will be nearly 100 connections, that's what we expected. However, if something happen and there are way more than 100 connections, the database connections may be failed. The way to mitigate the problem is to run FC by FC, so that we reduce the connection number, the CPU utilization will be lower and thus succeed. But we still need to figure out the root cause of the problem.
+
+merge/cleave/remap
+
+Fungibility == interchangeability
+
+SKU: stock-keeping unit
+
+Vendor VS merchant
+
+You cannot buy an ASIN. You can find the detail page for an ASIN, and buy an item from an offer, which is identified by merchant sku.
+
+How logscan?
+
+2017-05-09
+If you ask your customer whether do they want a new feature, they defenitely say yes. Do we need to think do they really need this new feature? Will they overuse or misuse this new feature?
+
+
+Latecy is not critical in AutoConfig
+
+cache autoconfig table
+
+Time to calculation
+
+FAB UI
+
+keep it simple, stupid
+
+vendor asin in largest FC
+
+history
+
+merchant is same to seller, it is a website concept
+vendor is a inbound concept
+
+ASIN - Catalog identifier. Does not specify condition or offer information. It doesn't change on condition, owner information, it's a sellable item for a given website.
+
+Merchant Sku - (Stock Keeping Unit used in the industry) it's idea of a distinct item, they are defined by a merchant. So the Merchant Sku is not unique, but the combination "Merchant + Merchant Sku" is unique. So when you talk about merchant Sku it often refers to Merchant + Merchant Sku.
+
+FN Sku - Fulfillment Network definition of a fungible item (able to be exchanged), in the same fulfillment center every item with the same FN Sku can be exchanged and deliver to the customer.
+
+Example: 2 books with the same title, the same cover, and are both new can be delivered, they are the same for the customer.
+FC Sku - Fulfillnent center item It's the next level of FN Sku. To track physical process needs.
+
+Example: 2 bottles of vitamins with 2 different expiration dates will have the same FN Sku but not the same FC Sku. They are fungible until one reaches the expiration date, then you can deliver only the second one.
+Some caveats: A lot of items already existed in the warehouse before FN Sku and FC Sku were used. So they just assigned the ASIN to FN Sku values.
+
+The story should be deliverable and have impact.
+
+2017-05-10
+Questions: 
+For ISMs, what's the difference btw query Edx and Redshift? EDX goes to FIP and they can query by click, redshift need to write queries?
+How to avoid gaming the system?
+
+
+Why there is a "buying period pad override day" column in the vendor preference table?
+
+customer experience (CX)
+OOS: out of stock
+
+Data at rest is used as a complement to the terms data in use and data in transit which together define the three states of digital data
+
+Create POSIX system account(run as user), give the run as user permission to that hostclass.
+
+You need to be the admin in the Anvil to change it.
+
+Use case for PO quantity table:
+PO + ASIN:
+Vendor + IOGL + ASIN:
+Confirm quantity:
+Receive quantity:
+PO completed status:
+update date:
+
+"purchaseOrderId" in POItemStateUpdated Message
+"fnSku" in POItemStateUpdated Message
+
+tier id is the status of the process of onboarding the asin
+
+Need to think whether could we do as last time, since every time the situation is different
+
+2017-05-11
+Question: t-shirt sizing?
+
+A timebox is a previously agreed period of time during which a person or a team works steadily towards completion of some goal.
+
+software: concurrency/consistency
+
+We should always use the latest generation of instance since it will be cheaper. Becasue to maintance the old machine is more expensive.
+
+Do we use t-shirt sizing for Epic, story?
+
+Question: How to filter fresh/primenow PO? By glproductGroup code? By FC name?
+
+PO message has ASIN, FC and PO; IAC message has ASIN, FC
+
+
+Things need to be changed ownership:
+https://octane.amazon.com/info/FreshFreyja
+
+bb relase the model and service package in local and do the right import and then bb release on cloud
+
+2017-05-15
+So what is the sticky bit?
+A sticky bit is a permission bit that is set on a directory that allows only the owner of the file within that directory, the owner of the directory or the root user to delete or rename the file. No other user has the needed privileges to delete the file created by some other user.
+
+This is a security measure to avoid deletion of critical folders and their content (sub-directories and files), though other users have full permissions.
+
+Why does /tmp have the t sticky bit?
+
+The /tmp directory can be used by different Linux users to create temporary files. Now, what if an user deletes/rename a file created by some other user in this directory?
+Well, to avoid these kind of issues, the concept of sticky bit is used. So for that a 777 is given but preserving the sticky bit is not a bad idea.
+
+This usage of the sticky bit only applies to directories, not files.
+
+2017-05-15
+priority: why ramdom number 4001, 9998, 10, 1?
+
+Read FAB Autoconfig BRD
+
+When you are in a meeting, focus on it! If you do other things and thinking of catch up later, it will be a waste of time!
+
+WHy the reporting database, the memory use that much.
+
+2017-05-16
+discrepancy: difference
+
+To launch a FC, business team need to cut a sim to our SE team and SE team will have help onboard, then our side of work is done. As long as business team setup the vendor preference and POG schedule, we will start to buy for them. 
+
+To connect spoke to a hub, add this relationship to the spoke's pog table. Note only the spoke knows the hub. Then we can see this relationship on our topology viewer. POG is what we can buy, so after the spoke has a pog "hub to spoke transship", it will show spokes to the hub in FAB run.
+
+The Inventory Pool Goggles website provides visibility into the mappings served up by the AvailabilityPoolMappingService (APMS). These mappings relate the website concepts of marketplace and merchant to the fulfillment network concepts of inventory availability pool (IAP), inventory owner group (IOG), and inventory owner group location (IOGL) [where a location is really just a warehouse or dropshipper].
+
+Have a OpsTools package for manual service call.
+
+Let me try to rephrase that.
+
+
+
+
 
 
 
