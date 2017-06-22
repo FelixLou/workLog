@@ -14,7 +14,7 @@ Knowledge: Jmockit all methods in expectation needs to be mocked and strictExpec
 
 
 09/29/2016
-Skills: SSH tunnal --> ssh -L 2009:localhost:2009 dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com
+Skills: SSH tunnal --> ssh -L 2009:localhost:2009 dev-dsk-lujiabin-2a-b2e8a541.us-west-2.amazon.com
 		RCS -- look at the intern wiki
 
 Knowledge: Don't push code on Friday; 
@@ -706,7 +706,7 @@ TODO: trigger a notification when build finished
 2016-12-07
 TODO: One more task in FabTools for datetime change
 	Do we need to change everything related to date to dateTime? Including warehouseQuantities, PoQuantities and plannedPoQuantities, PoAvailability?
-Skills: Dry-run before you push(brazil ws dry-run)
+Skills: Dry-run before you push(brazil ws dryrun)
 
 
 
@@ -1017,7 +1017,7 @@ Check the run_id of the fc, get the fabricOutput S3 link from the fabcore run ta
 
 - shrikant said for no POs cut tts, look at roq.csv, filtered asins, and vendor minimum csv
  = but in this case where we have a no PO alarm for HTX2,
- = SELECT * FROM fab_reporting.pog_po_schedules where output_id = '6d35f203' and order_date = '2017-01-09 00:00:00';
+ = SELECT * FROM fab_reporting.pog_po_schedules where output_id = 'b69a5c34' and order_date = '2017-05-13 00:00:00';
  = and see that there are no results, and say that we aren't scheduled to order that day
 
 VLT: From order placement time to the expected arrival time
@@ -1427,9 +1427,9 @@ Prefer newArrayList to
 There is no needc catch RuntimeException.
 
 # Reviews just the latest commit
-% cr --parent HEAD^
+% cr --parent 'HEAD^'
 # Updates a review with this range of commits
-% cr -r CR-21354 --range efb4b3e:d6a7800
+% cr -r CR-21354 --range efb4b3e:d6a7800(The range is ( ], exclude the begin but include the end)
 # Reviews specific commit ranges for two packages
 % cr --include "MyService[7f07509:a261b4a],MyServiceModel[HEAD^]"
 
@@ -2113,7 +2113,7 @@ Use Deencapsulation.invoke to use a private method
 2017-03-23
 POG: Vendors, FC, ASINs and schedule
 
-ssh to remote debug: ssh -L 5050:localhost:5050 dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com
+ssh to remote debug: ssh -L 5050:localhost:5050 dev-dsk-lujiabin-2a-b2e8a541.us-west-2.amazon.com
 
 S3 Download links:
 https://fab-tools.corp.amazon.com/s3Download.request?s3key=
@@ -2333,8 +2333,8 @@ scp -v localfile remotefile
 
 hostname: dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com
 
-Command to upload file to host: scp ~/Downloads/results lujiabin@dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com:/tmp/salesInfoResult
-Command to download file to local: scp lujiabin@dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com:/tmp/salesInfoToUpload/salesInfo ~/Downloads/salesInfo
+Command to upload file to host: scp ~/Downloads/results lujiabin@dev-dsk-lujiabin-2a-b2e8a541.us-west-2.amazon.com:/tmp/salesInfoResult
+Command to download file to local: scp lujiabin@dev-dsk-lujiabin-2a-b2e8a541.us-west-2.amazon.com:/tmp/salesInfoToUpload/salesInfo ~/Downloads/salesInfo
 
 IntelliJ student code: CGY3VQ9AYC
 
@@ -2442,7 +2442,7 @@ scp /tmp/salesInfoResult lujiabin@tethys-prod-na-1d-f647735e.us-east-1.amazon.co
 scp /tmp/salesInfoResult lujiabin@tethys-prod-na-1e-ec02e35e.us-east-1.amazon.com:/tmp/salesInfoResult
 
 
-scp ~/Downloads/results lujiabin@dev-dsk-lujiabin-2a-ec1c8fd4.us-west-2.amazon.com:/tmp/salesInfoResult
+scp ~/Downloads/results lujiabin@dev-dsk-lujiabin-2a-b2e8a541.us-west-2.amazon.com
 
 
 You can add permission on permission.amazon.com a sudo access, so that you can sudo run as user XXX
@@ -2817,6 +2817,7 @@ yujingh
 ruiwen
 wenyuanj
 lujiabin
+kccooley
 
 thakas@amazon.com
 lrrosada@amazon.com
@@ -2825,20 +2826,25 @@ yujingh@amazon.com
 ruiwen@amazon.com
 wenyuanj@amazon.com
 lujiabin@amazon.com
+kccooley@amazon.com
 
 arjonat
 zffriedm
 ruizand
-jagilber
 mahongyi
 wantiany
 
 arjonat@amazon.com
 zffriedm@amazon.com
 ruizand@amazon.com
-jagilber@amazon.com
 mahongyi@amazon.com
 wantiany@amazon.com
+
+thakas,lrrosada,rabellog,yujingh,ruiwen,wenyuanj,lujiabin,kccooley,arjonat,zffriedm,ruizand,mahongyi,wantiany
+
+thakas@amazon.com,lrrosada@amazon.com,rabellog@amazon.com,yujingh@amazon.com,ruiwen@amazon.com,wenyuanj@amazon.com,lujiabin@amazon.com,kccooley@amazon.com,arjonat@amazon.com,zffriedm@amazon.com,ruizand@amazon.com,mahongyi@amazon.com,wantiany@amazon.com
+
+thakas@amazon.com,lrrosada@amazon.com,rabellog@amazon.com,yujingh@amazon.com,ruiwen@amazon.com,wenyuanj@amazon.com,lujiabin@amazon.com,kccooley@amazon.com,arjonat@amazon.com;zffriedm@amazon.com;ruizand@amazon.com;mahongyi@amazon.com;wantiany@amazon.com
 
 
 
@@ -2931,15 +2937,11 @@ tier id is the status of the process of onboarding the asin
 Need to think whether could we do as last time, since every time the situation is different
 
 2017-05-11
-Question: t-shirt sizing?
-
 A timebox is a previously agreed period of time during which a person or a team works steadily towards completion of some goal.
 
 software: concurrency/consistency
 
 We should always use the latest generation of instance since it will be cheaper. Becasue to maintance the old machine is more expensive.
-
-Do we use t-shirt sizing for Epic, story?
 
 Question: How to filter fresh/primenow PO? By glproductGroup code? By FC name?
 
@@ -2986,10 +2988,500 @@ Have a OpsTools package for manual service call.
 
 Let me try to rephrase that.
 
+How could they override?
+
+"shadow mode for Freyja"
+
+script to compare vendor preference
+
+We should have a roll out plan to deploy these service
+
+What include in the switch to use SCOT forecasting?
+
+Improve quality of deployments:
+ 
+
+Do we want to keep our wiki updated?
+
+new code to get 100% code coverage 
+
+coverlay
+
+Review the test first and then source first.
+
+link the task id to the desciption to the cr.
+
+Add link to the commit message
+
+boiler plate?
+
+Every commit should be a working commit
+
+No push and weblab trun on on Fri, Sat, Sun
+
+greasemonkey script to add all devs in our group
+
+weblab doesn't support to add group, but they have a feature to do that
+
+2017-05-17
+IogL already has the program information
+hydragate pog?
+
+I need to spend 5 minutes to talk with my wife. -- Lucas said that in a meeting he drove
+
+
+2017-05-18
+database instance and host instances are different
+
+Remeber the action to take and follow up with the persons you need.
+
+Read document about EC2, Redshift, S3 and so on.
+
+How to do load test of a database?
+
+Performance issues with Amazon Web Services’ Elastic Block Storage (EBS) are complex to understand because EBS is an instance of networked storage. Unlike attached storage, your EBS volumes are sharing some infrastructure with other customers’. So when one of your EBS volumes gets slow, it’s hard to understand why. Actual behavior can sometimes run counter to your intuition
+
+TODO: Read AWS document when don't know what to do!!!
+
+I find it's good to upgrade a datbase instance, the new one is cheaper and latest model but it has EBS not SSD, so one SDE worried the latency problem. I didn't find something strong evidence to proof that doesn't affect us a lot and ask my manager for help.
+
+He gave me three options: 
+1. Find some easy data on the internet, to show the performance of EBS VS SSD.
+2. If cannot find easy data, do load test myself on the database to see the performance of EBS.
+3. Upgrade and if it has large affect, rollback.
+
+Also, he said we must do that someday since m1 is old and we need to use m4 someday.
+
+2017-05-19
+Why remove stories for user rating and weighting?
+
+What else do we do besides VCS?
+
+ticket reach throshold, secondary oncall will jump in
+
+learning series(edx)
+oncall-schedule
+
+Consumable environments allow the applications that you depend on to be deployed alongside your environment. Environments declare the other environments that they depend on, which leads to a more complete application model, and allows Apollo to better manage the environments that you require.
+
+primary environment - An environment that depends on other environments. This is the environment that performs the primary business functions.
+consumable environment - An environment that is marked as consumable, which allows other environments to declare a dependency on it.
+environment stage revision - A snapshot of an environment stage at a point in time. New revisions are created by deployments that include changes.
+
+They exist in a separate directory structure on the end host from the primary environment. This means that each environment may use a different version of the same package. The primary environment does not need to worry about what packages or package versions that the consumed environment uses.
+They are deployed as a part of the primary environment, and are guaranteed to be activated before the primary environment. This means that the primary environment does not need to worry about whether its dependent environments will be there before it is deployed. It also means that fleet owners do not need to duplicate fleet definitions in different environments.
+They are only updated when the primary environment is deployed. This means that all changes to the primary environment and its dependencies are audited as deployments, and can easily be rolled back.
+
+When a primary environment is deployed, its consumed environments will be deployed along with it. The primary environment will be linked to its consumed environments through the /apollo/env/<primary environment alias>/Apollo/Consumables directory on the end host. As an example, a Bounce deployment of the primary environment will look like:
+Remove the host from the VIP if Centralized VIP Management is used
+Deactivate the primary environment
+Deactivate the consumed environments (ordering is non-deterministic)
+Pull all packages and construct all environments
+Activate the consumed environments (ordering is non-deterministic)
+Activate the primary environment
+Enable the host in the VIP if Centralized VIP Management is used
+
+When seeing a never seen ticket, Search for history tt
+
+2017-05-21
+ASK: How do we choose which FC to migrate to use new forecast model first?
+
+DJS and SEDI:
+
+Splitover: connections higher than VIP can hold
+
+Time out right now may cause sev2, so when we got a sev2, we need to be careful.
+
+Do things that have more visibility.
+
+AFAIK: As far as I know
+
+2017-05-23
+ASK: SEA8 migration?
 
 
 
+08:47:23	UPDATE fabric.fc_programs SET demand_forecast_model = 'HISTORIC_AVERAGE_DEMAND' WHERE fc_program_uuid = ( SELECT fc_program_uuid FROM fabric.fc_programs WHERE fulfillment_center_id IN ( SELECT fulfillment_center_id FROM fabric.fulfillment_centers WHERE fulfillment_center_external_id IN ('LAX6')))	Error Code: 1093. You can't specify target table 'fc_programs' for update in FROM clause	0.077 sec
 
+
+TODO: CHange PO alarm setting
+
+TODO: check other pkgs java debug protocol
+
+design: one-pager for degin, stories breakdown, chop into two weeks schedule work
+
+check to do list before push code
+
+We cannot rerun for a single FC at the aws console when all fc finished since the fc cannot singal its parent. We can run a single FC via corla explorer FreshAutomatedBuyingService: RerunFabExecution. https://w.amazon.com/bin/view/AmazonFresh/RegionalSupplyChain/Troubleshooting_Guide/#HMitigation
+
+Difference btw fabsimulation, fabcalculation and rerunfabexecution
+
+difference btw run it on onebox/gamma and should_not_cut_po on prod
+
+FABService has two types of runs: simulation and rerun
+
+TODO: No merchant ID configured sev3
+
+Figure out how to let Gamma host talk to VIA prod stack
+
+
+prod/PromisedKeys/2017/5/24/376-EWR6/76b994db65f44c1184de97dd49e8b479_FabConfigArgs.json
+
+2017-05-24
+How to select host to run?
+
+cost not found exception
+
+If pass a hour, the log will start to output to the new log file.
+
+Farbic is doing the data fetching, so look at the FabricService.log when looking at the data fetching part.
+Fabcore is doing the calculation, so look at the FabCoreService.log when looking at the data fetching part.
+
+Write down how to run a crossdock fc after the normal fc failed
+
+How about crossdock reporting for EWR6?
+
+diff Reserve PO and submit PO for manual PO?
+
+Should I page ISM in that case?
+
+Import crossdock_actual_po_request from devo to prod
+Import crossdock_planned_po_request from devo to prod
+
+run utility to send PO message to Wombat
+
+When doing a run in a bery large loop, log the size, current num and time, so we know how long it will take to finish. 
+
+if (i % 100 == 0) {
+    System.out.println(String.format("%s Processed %d out of %d messages", DateTime.now(), i, messages.size()));
+}
+i++;
+
+TODO: Write down utility for generate planned PO message and transship message for both normal and crossdock. Like CsvCreatorUtil.java
+
+Look at the deployment logs: /apollo/var/logs/apollo-deployment.log* Look for anything that might tip you off
+
+
+TODO: Learn RoqCalculator and RoqcalculatorHelper
+
+pog : buyingPeriod --> Roq --> VendorMinimum
+
+TODO:Lamda expression
+
+transformation: sellable asin to source asin
+aggregate: masterpack to case
+
+
+???parent asin <-> child asin: source asin <-> sellable
+
+2017-05-25
+context switching cost lots of time
+new workspace, new child environment, sometimes sync from parent environment failed
+
+Even I only do small changes, I need to create the whole environment
+
+SELECT timestampdiff(minute, runs.run_date, runs.last_updated_date) as miuntes, fulfillment_center_external_id as fc
+FROM fabcore.runs
+
+DynamoDB: For partition key and sort key, the partition key should has little content, in that way, the data will spread more wide, so it will be more effective, since the hash function is quick but the scan after hash is slow.
+
+TOASK:IYOD
+
+TODO: A pipeline to sync all the environment to dev desktop
+
+amazon will ship the xd order
+
+XD: 15 cents cheaper per unit and less touch means better product
+
+TODO: Read Alibaba best pratice
+
+change the file size limit
+
+1-click child environment only sync from the 
+
+dungan plus zhencheng yinggai shi suoxiangpimi
+
+Encrypt amazon ID:
+    @Test
+    public void obfuscateId() {
+        System.out.println(AmzUid.encryptSequenceID(1, "A"));
+    }
+
+2017-05-27
+Operational review: Can we cut ourselves tickets? So that we have only one place to look at.
+
+2017-05-29
+Why DWP send me emails everyday told me job get descheduled? 
+
+Find all the sev2 tickets and what I think:
+1. For some of the issues we have, we decided to solve, can we cut ourselves tickets? So that we can see it clearly in one place and we have priority assign to them.
+2. 
+
+
+FABTools server cannot found?
+
+
+Where it is? rsc-checkstyle-config.xml
+
+Can I ask why do we enable check style in test folder while our other packages don't? 
+
+Why use singleton?
+
+How to read code review?
+
+Your analysis is correct; FAB takes demand for child ASINs and transforms the forecast into a forecast for the parent, with the assumption that no two parent ASINs can produce the same child ASIN. Specifically, this means that if there are 3 parent ASINs that can all produce the same child ASIN, then FAB will buy to 3 times the child demand.
+
+
+Operation review:
+https://tt.amazon.com/0113893562: The configuration is not compelete, so it cannot find the forecast group for LAX6. We don't have NO PO alarm for that since we fotget to add LAX6 to the Carnal and I talked to Shrikant and Tiago, the new alarm will go out today, so we don't want to spend time add them. 
+
+https://tt.amazon.com/0113901073: Zev and I both start a rerun, so I cancel one of them and it trigger the alarm. We should have more communicate besides on the ticket website.
+
+https://tt.amazon.com/0113986168: the forecasting group 70014 isn't set up in FDS. We need to talk to the forecasting group, at the meantime, we will roll EWR6 back.
+
+https://tt.amazon.com/0113906205: Kyle forgot to shutdown the debug port while security group is scanning vulnerability. We need to change the port to localhost:portnumber to make it more secuity. I am doing the code change.
+
+https://tt.amazon.com/0114095087: EWR6 timeout. We do some queries in the database and find out only EWR6 is longer than 100 mins, so we change the timeout to 3 hours for EWR6.
+
+https://tt.amazon.com/0114063698: uploading file larger than 10M failed without giving a reason. I talk to the ISM, she said at less we can add a note under the upload button.
+
+1. For some of the issues we have, we decided to solve, can we cut ourselves tickets? So that we can see it clearly in one place and we have priority assign to them.
+
+check with ISMs to see how do they see the PO is right or not?
+
+lujiabin.aka.corp.amazon.com --> dev-dsk-lujiabin-2a-b2e8a541.us-west-2.amazon.com
+
+2017-05-30
+VIM to replace string with another string in the whole file
+Try :%s/searchphrase/replacephase/g
+Without the % symbol Vim only matches and replaces on the current line.
+
+ps -ef | grep firefox
+kill -9 1986
+
+TODO: GO through the rally board
+
+2017-05-31
+When searching sev2 tickets, add additional searching field "minimum impact" and put "2" there.
+
+How to alarm for the no forecast?
+
+Write code to send message to wombat for all FCs? OutputID
+
+Why don't we have child fleet for each team for devo and gamma?
+Becuase they are much fewer compared to prod, thus no need to separate them.
+
+idk: I don't know
+
+2017-06-01
+Search file path on omni-grok,so you can see which package this file is in and see it on code browser
+
+See all the dependencies in your environment at "current package versions" 
+
+Adding FABToolsWebsite to consumable environment, if it failed, other consumbale environment also cannot be deployed.
+
+2017-06-01
+
+
+
+Singletons are popular in Java applications but they don't provide much value, especially when dependency injection is involved. Although singletons save object creation (and later garbage collection), initialization of the singleton requires synchronization; getting a handle to the single initialized instance only requires reading a volatile. Singletons are most useful for:
+
+stateful objects, such as configuration or counters
+objects that are expensive to construct or lookup
+objects that tie up resources, such as a database connection pool.
+
+2017-06-05
+https://builderhub.corp.amazon.com/blog/openjdk9-prerelease/
+https://w.amazon.com/bin/view/JDKTeam/JDK9/
+https://wiki.openjdk.java.net/display/JDK8/Java+Dependency+Analysis+Tool
+
+What is this graph? 				What is the impact?
+Title: Avg, Sum
+Unit: ms s
+
+
+How findbug detect utility class? Why not complain Lucas's code?
+
+If you are not providing any instance members, there is no need to allow them to create instances. So utility class doesn't need to have a public/default constructor. So for utility class, we should make the class final and constructor private.
+
+
+2017-06-06
+What does transship mean in IAC message?
+
+You can send a message as large as 262,144 bytes (256 KB) with SendMessageBatch. However, the total size of all the messages that you send in a single call to SendMessageBatch can't exceed 262,144 bytes (256 KB).
+
+The TPS is calculated by the total number of calls/latency
+
+2017-06-08
+If you get the data just from other team's database, your service will be coupled with other team. Since if they change their database schema, you may need to change as well or u will fail. API will be a more strict contract for that.
+
+SQS/SNS will make the call async. You can even setup a delay time for a sqs message to make it more async.
+
+If you need to keep to copy of data, you always need to consider the sync problem. Usually, it's no easy to keep them sync all the time.
+
+Bring questions to Senior SDE office hour if the question is Fresh wide. Ex: how to depracated Omaha
+
+@Data – an annotation that replaces @Getter, @Setter, @EqualsAndHashCode, @ToString and @RequiredArgsConstructor
+@Value – same as before but generates an immutable class with no setters
+
+2017-06-12
+Lucas found some alarm may not be useful, but not sure and want to remove it. Gabriel says we can change to metrics, so that we can put an alarm after a threshold.
+
+CSRF is a term for a vulnerability that permits a request for one site to be submitted from a page in a different site. For example, if the add-to-cart form handler were vulnerable to CSRF a request to add something to the cart could be submitted from a page hosted at a different site. This request could be automated such that when a user goes to a malicious site that site scripts an add-to-cart request causing the user's cart to get populated without the user realizing it.
+
+
+PKGs: RSC primitive, FABCommon, RSCWebsiteCommon
+https://w.amazon.com/bin/view/AmazonFresh/RegionalSupplyChain/VendorConfidence/#HAPIforuserratingUI
+https://pipelines.amazon.com/pipelines/RegionalSupplyChainPortal
+permissions: RSC portal
+on boarding with VCS AAA
+
+Sacha
+
+Update the epic description
+
+FABTools permission
+
+When meeting with somebody, need to introduce ourselves to them. This is Jiabin, I am responsible for the back-end system. This is Kyle Cooley, he is responsible for API. This is Kyle Brown, he is responsible for front-end. 
+
+When will we get zero cost? When scs proxy return no price, throw exception
+
+Grooming happens weekly whenever we have stories to groom.
+
+shadow test
+
+Use Camel to compare the diff between two requests/services
+
+Help test other services and products
+
+NIS: New items setup. A new ASIN want to be listed on Amazon
+
+When find a ticket that you don't know how to do, try search the history.
+
+Gain more mentorship
+
+Fn + Shift + F6 --> Refactor the code
+
+[A-Z][A-Z0-9]{9} is the regex for ASIN
+
+Move the common code between FABTools and RSC portal to FreshInventoryWebsiteCommon
+
+How is the last_modified_Date, last_modified_by change?
+
+Option + Command + C --> extract constants
+
+Option + Command + V --> extract variables
+
+TO ASK: Can we delete the job James created?
+SELECT * FROM fabcore.runs where requester_id='angelier' order by creation_date desc;
+
+Why James's run doesn't have swf id? That's not James, it is a ISM. James's alias is "jagilber", very similar
+
+Why gamma simulation has swf id? That's a POG wizard run by the ISM.
+
+When we using the same fabconfig args, we got the same swf id.
+
+FABTools comparision tools show "null" in the errors page, it means they are the same! 
+
+Slimcat is the Amazon wrapper for Tomcat
+
+Valid thread broadcast?
+
+https://www.scrumalliance.org/community/articles/2012/august/story-points-versus-task-hours
+
+What do you left for the team? For your family? For the world? Contribute more.
+
+'^' is control on Mac.
+
+Serval develop ways: leaves to root, root to leaves, root and leaves together
+
+Git best practices: new branch
+
+2017-06-15
+PoC (point of contact)
+
+BRB: Be right back
+
+If you change an element in the Set (in your case the elements are Set<String>, so adding or removing a String will change them), Set.contains(element) may fail to locate it, since the hashCode of the element will be different than what it was when the element was first added to the  HashSet.
+
+When you create a new HashSet containing the elements of the original one, the elements are added based on their current hashCode, so Set.contains(element) will return true for the new HashSet.
+
+You should avoid putting mutable instances in a HashSet (or using them as keys in a HashMap), and if you can't avoid it, make sure you remove the element before you mutate it and re-add it afterwards. Otherwise your HashSet will be broken.
+
+An example :
+
+Set<String> set = new HashSet<String>();
+set.add("one");
+set.add("two");
+Set<Set<String>> setOfSets = new HashSet<Set<String>>();
+setOfSets.add(set);
+boolean found = setOfSets.contains(set); // returns true
+set.add("three");
+Set<Set<String>> newSetOfSets = new HashSet<Set<String>>(setOfSets);
+found = setOfSets.contains(set); // returns false
+found = newSetOfSets.contains(set); // returns true
+
+metrics
+
+
+2017-06-17
+Leadership: Good intentions don't work. If you find some problems happen recursively, you need to make a complete process not ask for good intentions.
+
+CoralServiceTest pkg: The test package template is for those tests in which you do want to see the application running, that require additional dependencies that you might prefer not to carry along in the service package etc. It’s one layer up of testing, and it should be thin (and this is one of the contributors of that package speaking). For legacy services without any tests, it might be cheaper to thicken this top layer, but that’s another discussion.
+
+
+It’s not easy to share link of a web page via email or SIM. Usually I inspect the element, grab the id of the element, append the id to the URL with a #.
+
+spam@amazon.com
+
+If you are not agree on the root cause, keep asking questions and chanllenge the person.
+
+ticket SLA?
+
+Is there any way to simplify my work?
+
+https://martinfowler.com/articles/microservice-testing/#anatomy-modules
+
+STAR: Situation or Task > Action > Result
+
+2017-06-19
+Even when we need to open tickets in the code, we should think if Metrics + Carnaval or Cloudwatch couldn't do the same. By opening TTs directly from code, we lose good features, such as dedup.
+
+Test name convention: You can use the pattern methodBeingTested_scenarioShortDescription_expectedResult naming pattern to be consistent with other tests
+
+2017-06-20
+Corl explorer: https://lujiabin.aka.corp.amazon.com:8001/explorer/index.html
+
+Question to ask: how to change the request size
+
+Go through the board on the start of the sprint planning.
+
+Need to do the metrics
+
+VIP has a load balancer, it will assign request to it's hosts. We can set the maxConnection value for each host. If the maxConnection is 15, and we have 3 host, the max request we can have is 45. If the number of request exceeds 45, the client will get error, the server will get spillover metrics.
+
+Even if the test is passed, we need to be careful since the test can be wrong
+
+2017-06-21
+Use your judgement!
+
+Doc is old: when external team, especially remote team wants to onboard us.
+
+From Lucas code review: validate and sanitize the data first, then after the the ifs, I treat the happy case.
+
+Chanllege your manager based on data you collect and your judgement
+
+automatically add final, good or not? Add to field and input parameters are good, add to local variable is not.
+
+Cast from Double and double: When the application is not performance sensitive, we don't need to early optimization.
+
+Reply to other persons's invitation to vocation to make it funny
+
+When solving a problem, not only mitigate it, but also try to solve the root cause.
+
+When collabrate with other team, when you depend on their service, ask for their timeline/milestone for implement, deployment, if not fit your schedule, talk to them to fit your schedule and keep an eye on their project. Before their promise date, ask them how is the status. So we can move without risk.
+
+ 
 
 
 
